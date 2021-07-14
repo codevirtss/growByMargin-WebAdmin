@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConstantColors {
-  final Color mainColor = Color(0xffFFE5D9);
+  final Color mainColor = Color(0XFF92E3A9);
   final Color blackColor = Colors.black;
 }
 

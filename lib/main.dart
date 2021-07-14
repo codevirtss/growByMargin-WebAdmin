@@ -1,4 +1,4 @@
-import 'package:growbymargin_webadmin/Screens/LoginScreen.dart';
+import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
