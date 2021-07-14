@@ -1,5 +1,6 @@
 import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:growbymargin_webadmin/Screens/Home/home.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -14,6 +15,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
         home: Login(),
+        initialRoute: '/',
+        routes: {
+          "/": (context) => Login(),
+          "/home": (context) => Home(),
+         
+        },
       );
     });
   }

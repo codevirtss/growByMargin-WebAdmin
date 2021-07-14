@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:growbymargin_webadmin/Screens/Home/home.dart';
 import 'package:growbymargin_webadmin/Utils/Button.dart';
 import 'package:growbymargin_webadmin/Utils/Dimensions.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 
 final ConstantColors constantColors = new ConstantColors();
@@ -24,12 +27,21 @@ class Login_Moblie extends StatelessWidget {
             image: AssetImage("assets/Images/Admin.png"),
           )),
         ),
+        Container(
+            padding: EdgeInsets.only(bottom: 50),
+            child: Text(
+              "Admin Login @GrowByMargin.com",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 10.sp,
+              ),
+            )),
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 30),
           child: TextField(
             controller: emailController,
             decoration: InputDecoration(
-              suffixText: "@growbymargin.com",
+              // suffixText: "@growbymargin.com",
               labelText: "Admin Email address",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
@@ -52,7 +64,15 @@ class Login_Moblie extends StatelessWidget {
         ButtonWidget(
           constantColors: constantColors,
           title: "Sign In",
-          onpress: () {},
+          onpress: () async {
+            print(emailController.text);
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text).then((value) {
+              Navigator.pushReplacement(context,
+                  PageTransition(child: Home(), type: PageTransitionType.fade));
+            }
+            );;
+          },
         ),
       ],
     );
@@ -93,12 +113,21 @@ class Login_Desktop extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Container(
+                      padding: EdgeInsets.only(bottom: 50),
+                      child: Text(
+                        "Admin Login @GrowByMargin.com",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.sp,
+                        ),
+                      )),
                   Padding(
                     padding: const EdgeInsets.only(left: 0, right: 50),
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        suffixText: "@growbymargin.com",
+                        //   suffixText: "@growbymargin.com",
                         labelText: "Admin Email address",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(2.sp)),
@@ -121,7 +150,16 @@ class Login_Desktop extends StatelessWidget {
                   ButtonWidget(
                     constantColors: constantColors,
                     title: "Sign In",
-                    onpress: () {},
+                    onpress: () async {
+                      print(emailController.text);
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text).then((value) {
+              Navigator.pushReplacement(context,
+                  PageTransition(child: Home(), type: PageTransitionType.fade));
+            }
+            );;
+                    },
                   ),
                 ]),
           ),
@@ -149,12 +187,20 @@ class Login_tab extends StatelessWidget {
             image: AssetImage("assets/Images/Admin.png"),
           )),
         ),
+        Container(
+            padding: EdgeInsets.only(bottom: 50),
+            child: Text(
+              "Admin Login @GrowByMargin.com",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 10.sp,
+              ),
+            )),
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 30),
           child: TextField(
             controller: emailController,
             decoration: InputDecoration(
-              suffixText: "@growbymargin.com",
               labelText: "Admin Email address",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
@@ -165,6 +211,7 @@ class Login_tab extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 30),
           child: TextField(
+            obscureText: true,
             controller: passwordController,
             decoration: InputDecoration(
               labelText: "Admin Password",
@@ -177,7 +224,18 @@ class Login_tab extends StatelessWidget {
         ButtonWidget(
           constantColors: constantColors,
           title: "Sign In",
-          onpress: () {},
+          onpress: () async {
+            print(emailController.text);
+            await FirebaseAuth.instance
+                .signInWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text)
+                .then((value) {
+              Navigator.pushReplacement(context,
+                  PageTransition(child: Home(), type: PageTransitionType.fade));
+            }
+            );
+          },
         ),
       ],
     );
