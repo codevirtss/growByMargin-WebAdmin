@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
+import 'package:growbymargin_webadmin/Services/FirebaseAuth.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
+  FirebaseAuthOperations firebaseAuthOperations = FirebaseAuthOperations();
   bool isLoggedIn = false;
 
   @override

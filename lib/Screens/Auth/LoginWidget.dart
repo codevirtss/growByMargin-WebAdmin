@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
+import 'package:growbymargin_webadmin/Services/FirebaseAuth.dart';
 import 'package:growbymargin_webadmin/Utils/Button.dart';
 import 'package:growbymargin_webadmin/Utils/Dimensions.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
@@ -8,6 +9,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 
 final ConstantColors constantColors = new ConstantColors();
+FirebaseAuthOperations firebaseAuthOperations = FirebaseAuthOperations();
 
 class Login_Moblie extends StatelessWidget {
   final emailController;
@@ -41,7 +43,7 @@ class Login_Moblie extends StatelessWidget {
           child: TextField(
             controller: emailController,
             decoration: InputDecoration(
-              // suffixText: "@growbymargin.com",
+              suffixText: "@growbymargin.com",
               labelText: "Admin Email address",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
@@ -64,14 +66,9 @@ class Login_Moblie extends StatelessWidget {
         ButtonWidget(
           constantColors: constantColors,
           title: "Sign In",
-          onpress: () async {
-            print(emailController.text);
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-                email: emailController.text, password: passwordController.text).then((value) {
-              Navigator.pushReplacement(context,
-                  PageTransition(child: Home(), type: PageTransitionType.fade));
-            }
-            );;
+          onpress: () {
+            firebaseAuthOperations.loginasAdmin(
+                context, emailController.text, passwordController.text);
           },
         ),
       ],
@@ -127,7 +124,7 @@ class Login_Desktop extends StatelessWidget {
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        //   suffixText: "@growbymargin.com",
+                        suffixText: "@growbymargin.com",
                         labelText: "Admin Email address",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(2.sp)),
@@ -150,15 +147,9 @@ class Login_Desktop extends StatelessWidget {
                   ButtonWidget(
                     constantColors: constantColors,
                     title: "Sign In",
-                    onpress: () async {
-                      print(emailController.text);
-                      await FirebaseAuth.instance.signInWithEmailAndPassword(
-                          email: emailController.text,
-                          password: passwordController.text).then((value) {
-              Navigator.pushReplacement(context,
-                  PageTransition(child: Home(), type: PageTransitionType.fade));
-            }
-            );;
+                    onpress: () {
+                      firebaseAuthOperations.loginasAdmin(context,
+                          emailController.text, passwordController.text);
                     },
                   ),
                 ]),
@@ -202,6 +193,7 @@ class Login_tab extends StatelessWidget {
             controller: emailController,
             decoration: InputDecoration(
               labelText: "Admin Email address",
+              suffixText: "@growbymargin.com",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
             ),
@@ -224,17 +216,9 @@ class Login_tab extends StatelessWidget {
         ButtonWidget(
           constantColors: constantColors,
           title: "Sign In",
-          onpress: () async {
-            print(emailController.text);
-            await FirebaseAuth.instance
-                .signInWithEmailAndPassword(
-                    email: emailController.text,
-                    password: passwordController.text)
-                .then((value) {
-              Navigator.pushReplacement(context,
-                  PageTransition(child: Home(), type: PageTransitionType.fade));
-            }
-            );
+          onpress: () {
+            firebaseAuthOperations.loginasAdmin(
+                context, emailController.text, passwordController.text);
           },
         ),
       ],

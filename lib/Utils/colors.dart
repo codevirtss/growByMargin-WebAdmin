@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class ConstantColors {
   final Color mainColor = Color(0XFF92E3A9);
   final Color blackColor = Colors.black;
+  final Color greyColor = Colors.grey.shade300;
+  final Color whiteColor = Colors.white;
 }
 
 class HexColor extends Color {
