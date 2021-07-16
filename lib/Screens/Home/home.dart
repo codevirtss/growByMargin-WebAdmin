@@ -4,6 +4,7 @@ import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/uploadProduc
 import 'package:growbymargin_webadmin/Services/FirebaseAuth.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:vrouter/vrouter.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -40,11 +41,12 @@ class _HomeState extends State<Home> {
               ListTile(
                   title: Text('Upload Your Products!'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UploadProduct()));
-                    Navigator.pop(context);
+                    context.vRouter.to("/uploadProducts");
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => UploadProduct()));
+                    //Navigator.pop(context);
                   }),
             ],
           ),
