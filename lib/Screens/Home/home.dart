@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/Navigation.dart';
+import 'package:growbymargin_webadmin/Screens/Product/ManageProduct/manageProduct.dart';
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/uploadProductScreen.dart';
 import 'package:growbymargin_webadmin/Services/FirebaseAuth.dart';
 import 'package:growbymargin_webadmin/Utils/Responsive.dart';
@@ -131,7 +132,19 @@ class _HomeState extends State<Home> {
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
                                     child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${bookData[index]["bookId"]}");
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  child: ManageProduct(
+                                                    bookId: bookData[index]
+                                                        ["bookId"],
+                                                  ),
+                                                  type:
+                                                      PageTransitionType.fade));
+                                        },
                                         child: Text("Edit book")),
                                   )
                                 ],

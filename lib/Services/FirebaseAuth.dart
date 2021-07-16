@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:vrouter/vrouter.dart';
 
 class FirebaseAuthOperations {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -22,14 +23,13 @@ class FirebaseAuthOperations {
         .signInWithEmailAndPassword(
             email: "$email@growbymargin.com", password: password)
         .then((value) async {
-      Navigator.pushReplacement(context,
-          PageTransition(child: Home(), type: PageTransitionType.rightToLeft));
+      context.vRouter.to("/home");
     });
   }
 
   Future logOutasAdmin(context) async {
     await FirebaseAuth.instance.signOut().then((value) {
-         Navigator.pushReplacement(context,
+      Navigator.pushReplacement(context,
           PageTransition(child: Login(), type: PageTransitionType.rightToLeft));
     });
   }
