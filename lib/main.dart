@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       return VRouter(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
+
         initialUrl: "/",
         routes: [
           VWidget(path: "/", widget: Navigation()),
@@ -33,6 +34,16 @@ class MyApp extends StatelessWidget {
         //   "/home": (context) => Home(),
         //   "/uploadProdcuts": (context) => UploadProduct(),
         // },
+
+        initialRoute: '/uploadProdcuts',
+        routes: {
+          "/": (context) => Navigation(),
+          "/home": (context) => Home(),
+          "/uploadProdcuts": (context) => UploadProduct(
+                key: key,
+              ),
+        },
+
       );
     });
   }
