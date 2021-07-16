@@ -19,11 +19,13 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
-        initialRoute: '/',
+        initialRoute: '/uploadProdcuts',
         routes: {
           "/": (context) => Navigation(),
           "/home": (context) => Home(),
-          "/uploadProdcuts": (context) => UploadProduct(),
+          "/uploadProdcuts": (context) => UploadProduct(
+                key: key,
+              ),
         },
       );
     });
