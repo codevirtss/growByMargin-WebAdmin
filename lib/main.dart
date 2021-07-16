@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           VWidget(path: "/", widget: Navigation()),
           VWidget(path: "/home", widget: Home()),
           VWidget(path: "/uploadProducts", widget: UploadProduct()),
-          VRouteRedirector(path: ':_(.+)', redirectTo: "/")
+          VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
         ],
       );
     });

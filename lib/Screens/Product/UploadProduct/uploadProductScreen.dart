@@ -132,12 +132,12 @@ class _UploadProductState extends State<UploadProduct> {
             IconButton(
               tooltip: "Upload Your Product To DataBase",
               onPressed: () async {
-                if (collectionNameController.text.isNotEmpty &&
-                    bookNameController.text.isNotEmpty &&
-                    bookDiscrController.text.isNotEmpty &&
-                    bookPriceController.text.isNotEmpty &&
-                    bookPreViewUrl!.isNotEmpty &&
-                    bookFullUrl!.isNotEmpty) {
+                if (collectionNameController.text.isEmpty &&
+                    bookNameController.text.isEmpty &&
+                    bookDiscrController.text.isEmpty &&
+                    bookPriceController.text.isEmpty &&
+                    bookPreViewUrl!.isEmpty &&
+                    bookFullUrl!.isEmpty) {
                   await FirebaseFirestore.instance
                       .collection(BOOK_COLLECTION)
                       .doc(bookId!)
@@ -252,20 +252,21 @@ class _UploadProductState extends State<UploadProduct> {
                                         ),
                                       ),
                                       hSizedBox2,
-                                      bookPreViewUrl != null ?   Text(
-                                        "Previwe Book Added",
-                                        style: GoogleFonts.nunito(
-                                            color: Colors.black,
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ) :
-                                      Text(
-                                        "Add Previwe Book",
-                                        style: GoogleFonts.nunito(
-                                            color: Colors.black,
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ) ,
+                                      bookPreViewUrl != null
+                                          ? Text(
+                                              "Previwe Book Added",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          : Text(
+                                              "Add Previwe Book",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
                                     ],
                                   ),
                                   decoration: BoxDecoration(
@@ -290,20 +291,21 @@ class _UploadProductState extends State<UploadProduct> {
                                         ),
                                       ),
                                       hSizedBox2,
-                                     bookFullUrl != null ?   Text(
-                                        "Full Book Added",
-                                        style: GoogleFonts.nunito(
-                                            color: Colors.black,
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ) :
-                                      Text(
-                                        "Add Full Book",
-                                        style: GoogleFonts.nunito(
-                                            color: Colors.black,
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ) ,
+                                      bookFullUrl != null
+                                          ? Text(
+                                              "Full Book Added",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          : Text(
+                                              "Add Full Book",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
                                     ],
                                   ),
                                   decoration: BoxDecoration(
