@@ -11,7 +11,7 @@ import 'package:vrouter/vrouter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  setPathUrlStrategy();
+
   runApp(MyApp());
 }
 
@@ -22,28 +22,13 @@ class MyApp extends StatelessWidget {
       return VRouter(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
-
         initialUrl: "/",
         routes: [
           VWidget(path: "/", widget: Navigation()),
           VWidget(path: "/home", widget: Home()),
           VWidget(path: "/uploadProducts", widget: UploadProduct()),
+          VRouteRedirector(path: ':_(.+)', redirectTo: "/")
         ],
-        // routes: {
-        //   "/": (context) => Navigation(),
-        //   "/home": (context) => Home(),
-        //   "/uploadProdcuts": (context) => UploadProduct(),
-        // },
-
-        initialRoute: '/uploadProdcuts',
-        routes: {
-          "/": (context) => Navigation(),
-          "/home": (context) => Home(),
-          "/uploadProdcuts": (context) => UploadProduct(
-                key: key,
-              ),
-        },
-
       );
     });
   }
