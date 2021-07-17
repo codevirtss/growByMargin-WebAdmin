@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:file_picker/file_picker.dart';
@@ -48,8 +47,9 @@ class _ManageProductState extends State<ManageProduct> {
 
       Reference reference = FirebaseStorage.instance
           .ref()
-          .child('CoverImages')
-          .child(widget.bookId!);
+          .child("Books")
+          .child(widget.bookId!)
+          .child('CoverImages');
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {
@@ -102,10 +102,10 @@ class _ManageProductState extends State<ManageProduct> {
       String? filename = result.files.single.name;
 
       Reference reference = FirebaseStorage.instance
-          .ref()
+         .ref()
           .child('Books')
           .child(widget.bookId!)
-          .child('Full');
+          .child("Full");
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {

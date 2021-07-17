@@ -67,6 +67,13 @@ class _HomeState extends State<Home> {
                     //         builder: (context) => UploadProduct()));
                     //Navigator.pop(context);
                   }),
+                  ListTile(
+                    title: Text("Offers"),
+                    onTap: (){
+                      context.vRouter.to("/offers");
+
+                    },
+                  )
             ],
           ),
         ),
