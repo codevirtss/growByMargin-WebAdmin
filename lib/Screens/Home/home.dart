@@ -67,6 +67,12 @@ class _HomeState extends State<Home> {
                     //         builder: (context) => UploadProduct()));
                     //Navigator.pop(context);
                   }),
+              ListTile(
+                title: Text("Offers"),
+                onTap: () {
+                  context.vRouter.to("/offers");
+                },
+              )
             ],
           ),
         ),
@@ -219,7 +225,19 @@ class _HomeState extends State<Home> {
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
                                     child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${bookData[index]["bookId"]}");
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  child: ManageProduct(
+                                                    bookId: bookData[index]
+                                                        ["bookId"],
+                                                  ),
+                                                  type:
+                                                      PageTransitionType.fade));
+                                        },
                                         child: Text("Edit book")),
                                   )
                                 ],
@@ -294,7 +312,19 @@ class _HomeState extends State<Home> {
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
                                     child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${bookData[index]["bookId"]}");
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  child: ManageProduct(
+                                                    bookId: bookData[index]
+                                                        ["bookId"],
+                                                  ),
+                                                  type:
+                                                      PageTransitionType.fade));
+                                        },
                                         child: Text("Edit book")),
                                   )
                                 ],

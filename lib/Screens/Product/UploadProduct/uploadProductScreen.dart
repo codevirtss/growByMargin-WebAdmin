@@ -44,8 +44,11 @@ class _UploadProductState extends State<UploadProduct> {
 
       String? filename = result.files.single.name;
 
-      Reference reference =
-          FirebaseStorage.instance.ref().child('CoverImages').child(bookId!);
+      Reference reference = FirebaseStorage.instance
+          .ref()
+          .child("Books")
+          .child(bookId!)
+          .child('CoverImages');
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {
@@ -115,13 +118,8 @@ class _UploadProductState extends State<UploadProduct> {
                       context: context,
                       builder: (conetxt) {
                         return Center(
-                          child: Container(
-                            child: Text(
-                              "The Fileds are empty",
-                            ),
-                            decoration: BoxDecoration(
-                                color: constantColors.mainColor,
-                                borderRadius: BorderRadius.circular(2.sp)),
+                          child: Text(
+                            "The Fileds are empty",
                           ),
                         );
                       });

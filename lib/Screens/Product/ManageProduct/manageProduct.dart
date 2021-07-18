@@ -1,17 +1,18 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:growbymargin_webadmin/Utils/BookData.dart';
 import 'package:growbymargin_webadmin/Utils/Dimensions.dart';
 import 'package:growbymargin_webadmin/Utils/Responsive.dart';
 import 'package:growbymargin_webadmin/Utils/Strigns.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
 import 'package:sizer/sizer.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vrouter/vrouter.dart';
 
 class ManageProduct extends StatefulWidget {
   final bookId;
@@ -48,8 +49,9 @@ class _ManageProductState extends State<ManageProduct> {
 
       Reference reference = FirebaseStorage.instance
           .ref()
-          .child('CoverImages')
-          .child(widget.bookId!);
+          .child("Books")
+          .child(widget.bookId!)
+          .child('CoverImages');
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {
@@ -105,7 +107,7 @@ class _ManageProductState extends State<ManageProduct> {
           .ref()
           .child('Books')
           .child(widget.bookId!)
-          .child('Full');
+          .child("Full");
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {
@@ -124,7 +126,29 @@ class _ManageProductState extends State<ManageProduct> {
         .get()
         .then((value) {
       bookData = value.data();
+      // var bookId = widget.bookId;
+      // BookData.bookCollection = bookData["bookCollectionName"];
+      // BookData.bookName = bookData["bookName"];
+      // BookData.bookDescription = bookData["bookDescription"];
+      // print(BookData.bookCollection);
+      // print(BookData.bookName);
+      // print(BookData.bookDescription);
     });
+  }
+
+  @override
+  void initState() {
+    getBookDetailById().then((value) {
+      collectionNameController.text = bookData["bookCollectionName"];
+      bookNameController.text = bookData["bookName"];
+      bookDiscrController.text = bookData["bookDescription"];
+      bookPriceController.text = bookData["bookPrice"];
+      imageUrl = bookData["bookCoverImageUrl"];
+      bookPreViewUrl = bookData["bookPreviewUrl"];
+      bookFullUrl = bookData["fullBookUrl"];
+    });
+
+    super.initState();
   }
 
   ConstantColors constantColors = ConstantColors();
@@ -146,7 +170,26 @@ class _ManageProductState extends State<ManageProduct> {
           actions: <Widget>[
             IconButton(
               icon: Icon(EvaIcons.save),
-              onPressed: () {},
+              onPressed: () async {
+                print(bookNameController.text);
+                print(collectionNameController.text);
+                print(bookDiscrController.text);
+                await FirebaseFirestore.instance
+                    .collection(BOOK_COLLECTION)
+                    .doc(widget.bookId)
+                    .update({
+                  "bookCollectionName": collectionNameController.text,
+                  "bookName": bookNameController.text,
+                  "bookDescription": bookDiscrController.text,
+                  "bookCoverImageUrl": imageUrl!,
+                  "bookPrice": bookPriceController.text,
+                  "bookPreviewUrl": bookPreViewUrl!,
+                  "fullBookUrl": bookFullUrl!,
+                  "bookId": widget.bookId!,
+                }).then((value) {
+                  context.vRouter.to("/home");
+                });
+              },
             )
           ]),
       body: FutureBuilder(
@@ -168,7 +211,7 @@ class _ManageProductState extends State<ManageProduct> {
                                 height: 30.h,
                                 width: 30.h,
                                 child: Stack(
-                                 alignment: Alignment.bottomRight,
+                                  alignment: Alignment.bottomRight,
                                   children: [
                                     IconButton(
                                       onPressed: () {
@@ -180,7 +223,6 @@ class _ManageProductState extends State<ManageProduct> {
                                         color: constantColors.mainColor,
                                       ),
                                     ),
-                                  
                                   ],
                                 ),
                                 decoration: BoxDecoration(
@@ -190,10 +232,10 @@ class _ManageProductState extends State<ManageProduct> {
                                       color: constantColors.greyColor,
                                     ),
                                     image: DecorationImage(
-                                        image:imageUrl != null ? NetworkImage(imageUrl!) :  NetworkImage(
-                                            bookData["bookCoverImageUrl"])
-                                            
-                                            )),
+                                        image: imageUrl != null
+                                            ? NetworkImage(imageUrl!)
+                                            : NetworkImage(bookData[
+                                                "bookCoverImageUrl"]))),
                               )),
                           Container(
                             child: Column(
@@ -291,7 +333,7 @@ class _ManageProductState extends State<ManageProduct> {
                             padding:
                                 const EdgeInsets.only(left: hBox2, top: vBox2),
                             child: Text(
-                              "Enter your collection name",
+                              "Enter your  collection name",
                               style: GoogleFonts.nunito(
                                   color: Colors.black,
                                   fontSize: 15.sp,
@@ -302,10 +344,7 @@ class _ManageProductState extends State<ManageProduct> {
                             padding: const EdgeInsets.only(left: 20, right: 20),
                             child: TextField(
                               controller: collectionNameController,
-                              
-                              
                               decoration: InputDecoration(
-                                
                                   labelText: "Collection name",
                                   labelStyle: GoogleFonts.nunito(
                                       color: Colors.black,
