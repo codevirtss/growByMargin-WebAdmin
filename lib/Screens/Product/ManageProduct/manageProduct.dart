@@ -197,8 +197,7 @@ class _ManageProductState extends State<ManageProduct> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
-              child: Responsive(
-                mobile: Container(
+             child: Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -415,9 +414,6 @@ class _ManageProductState extends State<ManageProduct> {
                     ],
                   ),
                 ),
-                tablet: Container(),
-                desktop: Container(),
-              ),
             );
           } else {
             return Text("Not done");
