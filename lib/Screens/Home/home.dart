@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
               ListTile(
                   title: Text('Upload Your Products!'),
                   onTap: () {
-                    context.vRouter.to("/uploadProducts");
+                    context.vRouter.to("/upload");
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(
