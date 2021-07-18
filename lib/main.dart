@@ -6,12 +6,11 @@ import 'package:growbymargin_webadmin/Screens/Offers/offerUpload.dart';
 import 'package:growbymargin_webadmin/Screens/Offers/offers.dart';
 
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/desktop_view.dart';
-import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/uploadProductScreen.dart';
-import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/upload_screen.dart';
+
 import 'package:sizer/sizer.dart';
 
 import 'package:vrouter/vrouter.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
