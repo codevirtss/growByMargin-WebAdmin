@@ -7,6 +7,7 @@ import 'package:growbymargin_webadmin/Screens/Offers/offers.dart';
 import 'package:growbymargin_webadmin/Screens/Product/ManageProduct/manageProduct.dart';
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/desktop_view.dart';
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/uploadProductScreen.dart';
+import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/upload_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:vrouter/vrouter.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         routes: [
           VWidget(path: "/", widget: Navigation()),
           VWidget(path: "/home", widget: Home()),
+          VWidget(path: "/upload", widget: Upload()),
           VWidget(path: "/uploadProducts", widget: UploadProduct()),
           VWidget(path: "/offers", widget: Offers()),
           VWidget(path: "/upload", widget: DesktopView()),
