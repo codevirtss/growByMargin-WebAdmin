@@ -5,6 +5,9 @@ class ConstantColors {
   final Color blackColor = Colors.black;
   final Color greyColor = Colors.grey.shade300;
   final Color whiteColor = Colors.white;
+  static Color greenColor = Color(0xff01CF85);
+  static Color organeColor = Color(0xffFE585A);
+  static Color blueColor = Color(0xff394C73);
 }
 
 class HexColor extends Color {

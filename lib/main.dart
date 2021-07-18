@@ -11,6 +11,7 @@ import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/upload_scree
 import 'package:sizer/sizer.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:vrouter/vrouter.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,17 +23,18 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: (context, orientation, deviceType) {
+    return FlutterSizer(builder: (context, orientation, deviceType) {
       return VRouter(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
-        initialUrl: "/",
+        initialUrl: "/upload",
         routes: [
           VWidget(path: "/", widget: Navigation()),
           VWidget(path: "/home", widget: Home()),
           VWidget(path: "/upload", widget: Upload()),
           VWidget(path: "/uploadProducts", widget: UploadProduct()),
           VWidget(path: "/offers", widget: Offers()),
+          VWidget(path: "/upload", widget: DesktopView()),
           VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
         ],
       );
