@@ -1,21 +1,18 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/Navigation.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
 import 'package:growbymargin_webadmin/Screens/Offers/offerUpload.dart';
 import 'package:growbymargin_webadmin/Screens/Offers/offers.dart';
-
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/desktop_view.dart';
-
 import 'package:sizer/sizer.dart';
-
 import 'package:vrouter/vrouter.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
