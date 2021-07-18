@@ -54,6 +54,7 @@ class Login_Moblie extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 30),
           child: TextField(
+            obscureText: true,
             controller: passwordController,
             decoration: InputDecoration(
               labelText: "Admin Password",
@@ -135,8 +136,10 @@ class Login_Desktop extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 0, right: 50),
                     child: TextField(
+                         obscureText: true,
                       controller: passwordController,
                       decoration: InputDecoration(
+                        
                         labelText: "Admin Password",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(2.sp)),
