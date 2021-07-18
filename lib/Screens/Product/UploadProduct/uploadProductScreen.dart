@@ -60,6 +60,62 @@ class _UploadProductState extends State<UploadProduct> {
     }
   }
 
+  void pickPreviewFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowCompression: true,
+      allowMultiple: false,
+      allowedExtensions: ['epub'],
+    );
+    if (result != null) {
+      Uint8List? uploadFile = result.files.single.bytes;
+
+      String? filename = result.files.single.name;
+
+      Reference reference = FirebaseStorage.instance
+          .ref()
+          .child('Books')
+          .child(bookId!)
+          .child("Preview");
+
+      final UploadTask uploadTask = reference.putData(uploadFile!);
+      uploadTask.whenComplete(() async {
+        String previewbookFile = await uploadTask.snapshot.ref.getDownloadURL();
+        setState(() {
+          bookPreViewUrl = previewbookFile;
+        });
+      });
+    }
+  }
+
+  void pickFullFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowCompression: true,
+      allowMultiple: false,
+      allowedExtensions: ['epub'],
+    );
+    if (result != null) {
+      Uint8List? uploadFile = result.files.single.bytes;
+
+      String? filename = result.files.single.name;
+
+      Reference reference = FirebaseStorage.instance
+          .ref()
+          .child('Books')
+          .child(bookId!)
+          .child("Full");
+
+      final UploadTask uploadTask = reference.putData(uploadFile!);
+      uploadTask.whenComplete(() async {
+        String fullbookFile = await uploadTask.snapshot.ref.getDownloadURL();
+        setState(() {
+          bookFullUrl = fullbookFile;
+        });
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,31 +154,59 @@ class _UploadProductState extends State<UploadProduct> {
                     "fullBookUrl": bookFullUrl!,
                     "bookId": bookId!,
                   }).whenComplete(() {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: 5.h,
-                            width: 5.w,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("assets/Images/done.jpeg"),
-                                ),
-                                borderRadius: BorderRadius.circular(2.sp)),
-                          );
-                        });
+                       return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Alert'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(
+                                  'This is to inform you that the fields are empty'),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                   });
                 }
                 {
-                  return showDialog(
-                      context: context,
-                      builder: (conetxt) {
-                        return Center(
-                          child: Text(
-                            "The Fileds are empty",
+                  return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Alert'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(
+                                  'This is to inform you that the fields are empty'),
+                            ],
                           ),
-                        );
-                      });
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 }
               },
               icon: Icon(EvaIcons.uploadOutline),
@@ -131,17 +215,17 @@ class _UploadProductState extends State<UploadProduct> {
         ),
         body: SingleChildScrollView(
             child: Responsive(
-          mobile: Column(
+          mobile: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              Column(
                 children: [
                   Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        height: 30.h,
-                        width: 30.h,
+                        height: 20.h,
+                        width: 20.h,
                         child: Center(
                             child: imageUrl == null
                                 ? Column(
@@ -174,19 +258,85 @@ class _UploadProductState extends State<UploadProduct> {
                             borderRadius: BorderRadius.circular(10.sp)),
                       )),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        child: Text(
-                          """Upload coverImage fro
-your product""",
-                          style: GoogleFonts.nunito(
-                              color: Colors.black,
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w600),
-                        ),
+                          height: 10.h,
+                          width: 50.w,
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  pickPreviewFile();
+                                },
+                                icon: Icon(
+                                  EvaIcons.fileAdd,
+                                  size: 20.sp,
+                                  color: constantColors.mainColor,
+                                ),
+                              ),
+                              hSizedBox2,
+                              bookPreViewUrl != null
+                                  ? Text(
+                                      "Previwe Book Added",
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.black,
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  : Text(
+                                      "Add Previwe Book",
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.black,
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.sp),
+                              color: constantColors.greyColor)),
+                      SizedBox(
+                        height: 5.h,
                       ),
+                      Container(
+                          height: 10.h,
+                          width: 50.w,
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  pickFullFile();
+                                },
+                                icon: Icon(
+                                  EvaIcons.fileAdd,
+                                  size: 20.sp,
+                                  color: constantColors.mainColor,
+                                ),
+                              ),
+                              hSizedBox2,
+                              bookFullUrl != null
+                                  ? Text(
+                                      "Full Book Added",
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.black,
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  : Text(
+                                      "Add Full Book",
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.black,
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.sp),
+                              color: constantColors.greyColor)),
                     ],
-                  )
+                  ),
                 ],
               ),
               Column(
@@ -275,15 +425,6 @@ your product""",
               ),
             ],
           ),
-          // mobile: UploadMobile(
-          //   bookDiscr: bookDiscrController.text,
-          //   bookName: bookNameController.text,
-          //   bookPrice: bookPriceController.text,
-          //   bookPreViewUrl: bookPreViewUrl!,
-          //   collectionName: collectionNameController.text,
-          //   bookFullUrl: bookFullUrl!,
-          //   imageUrl: imageUrl!,
-          // ),
           tablet: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -326,20 +467,98 @@ your product""",
                             color: constantColors.greyColor,
                             borderRadius: BorderRadius.circular(10.sp)),
                       )),
-                  Column(
-                    children: [
-                      Container(
-                        child: Text(
-                          """Upload coverImage fro
-your product""",
-                          style: GoogleFonts.nunito(
-                              color: Colors.black,
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w600),
+                   Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                            height: 10.h,
+                            width: 50.w,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    pickPreviewFile();
+                                  },
+                                  icon: Icon(
+                                    EvaIcons.fileAdd,
+                                    size: 20.sp,
+                                    color: constantColors.mainColor,
+                                  ),
+                                ),
+                                hSizedBox2,
+                                bookPreViewUrl != null
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Previwe Book Added",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Add Previwe Book",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.sp),
+                                color: constantColors.greyColor)),
+                        SizedBox(
+                          height: 2.h,
                         ),
-                      ),
-                    ],
-                  )
+                        Container(
+                            height: 10.h,
+                            width: 50.w,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    pickFullFile();
+                                  },
+                                  icon: Icon(
+                                    EvaIcons.fileAdd,
+                                    size: 20.sp,
+                                    color: constantColors.mainColor,
+                                  ),
+                                ),
+                                hSizedBox2,
+                                bookFullUrl != null
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Full Book Added",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Add Full Book",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.sp),
+                                color: constantColors.greyColor)),
+                      ],
+                    ),
                 ],
               ),
               Padding(
@@ -424,15 +643,6 @@ your product""",
               ),
             ],
           ),
-          // tablet: UploadTab(
-          //   bookDiscr: bookDiscrController.text,
-          //   bookName: bookNameController.text,
-          //   bookPrice: bookPriceController.text,
-          //   bookPreViewUrl: bookPreViewUrl!,
-          //   collectionName: collectionNameController.text,
-          //   bookFullUrl: bookFullUrl!,
-          //   imageUrl: imageUrl!,
-          // ),
           desktop: Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -443,7 +653,7 @@ your product""",
                     Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 30.h,
+                          height: 20.h,
                           width: 30.h,
                           child: Center(
                               child: imageUrl == null
@@ -463,6 +673,7 @@ your product""",
                                             color: constantColors.mainColor,
                                           ),
                                         ),
+                                        vSizedBox2,
                                         Text(
                                           "Add cover Image",
                                           style: GoogleFonts.nunito(
@@ -478,19 +689,97 @@ your product""",
                               borderRadius: BorderRadius.circular(10.sp)),
                         )),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: Text(
-                            """Upload coverImage fro
-          your product""",
-                            style: GoogleFonts.nunito(
-                                color: Colors.black,
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w600),
-                          ),
+                            height: 10.h,
+                            width: 50.w,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    pickPreviewFile();
+                                  },
+                                  icon: Icon(
+                                    EvaIcons.fileAdd,
+                                    size: 20.sp,
+                                    color: constantColors.mainColor,
+                                  ),
+                                ),
+                                hSizedBox2,
+                                bookPreViewUrl != null
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Previwe Book Added",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Add Previwe Book",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.sp),
+                                color: constantColors.greyColor)),
+                        SizedBox(
+                          height: 2.h,
                         ),
+                        Container(
+                            height: 10.h,
+                            width: 50.w,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    pickFullFile();
+                                  },
+                                  icon: Icon(
+                                    EvaIcons.fileAdd,
+                                    size: 20.sp,
+                                    color: constantColors.mainColor,
+                                  ),
+                                ),
+                                hSizedBox2,
+                                bookFullUrl != null
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Full Book Added",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Add Full Book",
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.black,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.sp),
+                                color: constantColors.greyColor)),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 Column(
@@ -591,146 +880,7 @@ your product""",
         )));
   }
 }
-// Column(
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Row(
-//                 children: [
-//                   Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Container(
-//                         height: 30.h,
-//                         width: 30.h,
-//                         child: Center(
-//                             child: imageUrl == null
-//                                 ? Column(
-//                                     mainAxisAlignment: MainAxisAlignment.center,
-//                                     crossAxisAlignment:
-//                                         CrossAxisAlignment.center,
-//                                     children: [
-//                                       IconButton(
-//                                         onPressed: () {
-//                                           pickCoverImage();
-//                                         },
-//                                         icon: Icon(
-//                                           EvaIcons.imageOutline,
-//                                           size: 20.sp,
-//                                           color: constantColors.mainColor,
-//                                         ),
-//                                       ),
-//                                       Text(
-//                                         "Add cover Image",
-//                                         style: GoogleFonts.nunito(
-//                                             color: Colors.black,
-//                                             fontSize: 10.sp,
-//                                             fontWeight: FontWeight.w600),
-//                                       ),
-//                                     ],
-//                                   )
-//                                 : Image.network(imageUrl!)),
-//                         decoration: BoxDecoration(
-//                             color: constantColors.greyColor,
-//                             borderRadius: BorderRadius.circular(10.sp)),
-//                       )),
-//                   Column(
-//                     children: [
-//                       Container(
-//                         child: Text(
-//                           """Upload coverImage fro
-// your product""",
-//                           style: GoogleFonts.nunito(
-//                               color: Colors.black,
-//                               fontSize: 10.sp,
-//                               fontWeight: FontWeight.w600),
-//                         ),
-//                       ),
-//                     ],
-//                   )
-//                 ],
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.only(left: hBox2, top: vBox2),
-//                 child: Text(
-//                   "Enter your collection name",
-//                   style: GoogleFonts.nunito(
-//                       color: Colors.black,
-//                       fontSize: 15.sp,
-//                       fontWeight: FontWeight.w600),
-//                 ),
-//               ),
-//               Container(
-//                 padding: const EdgeInsets.only(left: 20, right: 20),
-//                 child: TextField(
-//                   controller: collectionNameController,
-//                   decoration: InputDecoration(
-//                       labelText: "Collection name",
-//                       labelStyle: GoogleFonts.nunito(
-//                           color: Colors.black,
-//                           fontSize: 10.sp,
-//                           fontWeight: FontWeight.normal),
-//                       hintText: "HurbalLife",
-//                       hintStyle: GoogleFonts.nunito(
-//                           color: Colors.grey,
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.normal)),
-//                 ),
-//               ),
-//               Container(
-//                 padding: const EdgeInsets.only(left: 20, right: 20),
-//                 child: TextField(
-//                   controller: bookNameController,
-//                   decoration: InputDecoration(
-//                       labelText: "Book name",
-//                       labelStyle: GoogleFonts.nunito(
-//                           color: Colors.black,
-//                           fontSize: 10.sp,
-//                           fontWeight: FontWeight.normal),
-//                       hintText: "Herbal remedies for life.",
-//                       hintStyle: GoogleFonts.nunito(
-//                           color: Colors.grey,
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.normal)),
-//                 ),
-//               ),
-//               Container(
-//                 padding: const EdgeInsets.only(left: 20, right: 40),
-//                 child: TextField(
-//                   controller: bookPriceController,
-//                   decoration: InputDecoration(
-//                       labelText: "Book Price",
-//                       labelStyle: GoogleFonts.nunito(
-//                           color: Colors.black,
-//                           fontSize: 10.sp,
-//                           fontWeight: FontWeight.normal),
-//                       hintText: "ex: 100\$ ",
-//                       hintStyle: GoogleFonts.nunito(
-//                           color: Colors.grey,
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.normal)),
-//                 ),
-//               ),
-//               Container(
-//                 padding: const EdgeInsets.only(left: 20, right: 20),
-//                 child: TextField(
-//                   controller: bookDiscrController,
-//                   maxLines: null,
-//                   maxLength: null,
-//                   decoration: InputDecoration(
-//                       labelText: "About the books",
-//                       labelStyle: GoogleFonts.nunito(
-//                           color: Colors.black,
-//                           fontSize: 10.sp,
-//                           fontWeight: FontWeight.normal),
-//                       hintText: "Add discription about this ebook",
-//                       hintStyle: GoogleFonts.nunito(
-//                           color: Colors.grey,
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.normal)),
-//                 ),
-//               ),
-//             ],
-//           ),
+
 
 class UploadMobile extends StatelessWidget {
   final imageUrl;

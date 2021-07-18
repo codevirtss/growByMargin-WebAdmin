@@ -6,10 +6,14 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:growbymargin_webadmin/Screens/Offers/offerUpload.dart';
 import 'package:growbymargin_webadmin/Utils/Responsive.dart';
+import 'package:growbymargin_webadmin/Utils/Strigns.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vrouter/vrouter.dart';
 
 class Offers extends StatefulWidget {
   const Offers({Key? key}) : super(key: key);
@@ -52,69 +56,12 @@ class _OffersState extends State<Offers> {
     }
   }
 
-  // FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-
-  // uploadFileToStorage(File file) {
-  //   UploadTask task = _firebaseStorage
-  //       .ref()
-  //       .child("Offers")
-  //       .child(offerId!)
-  //       .child("images/${DateTime.now().toString()}")
-  //       .putFile(file);
-  //   return task;
-  // }
-
-  // writeImageUrlToFireStore(imageUrl) {
-  //   _firebaseFirestore.collection("Offers").doc(offerId!).set({
-  //     "imgUrl": imageUrl,
-  //     "OfferId": offerId!,
-  //     // "destinationUrl": destination.text
-  //   });
-  // }
-
-  // saveImageUrlToFirebase(UploadTask task) {
-  //   task.snapshotEvents.listen((snapShot) {
-  //     if (snapShot.state == TaskState.success) {
-  //       snapShot.ref
-  //           .getDownloadURL()
-  //           .then((imageUrl) => writeImageUrlToFireStore(imageUrl));
-  //     }
-  //   });
-  // }
-
-  // Future selectFileToUpload() async {
-  //   try {
-  //     FilePickerResult? result = await FilePicker.platform
-  //         .pickFiles(allowMultiple: true, type: FileType.image);
-
-  //     if (result != null) {
-  //       selectedFiles.clear();
-
-  //       result.files.forEach((selectedFile) {
-  //         File file = File(selectedFile.path!);
-  //         selectedFiles.add(file);
-  //       });
-
-  //       selectedFiles.forEach((file) {
-  //         final UploadTask task = uploadFileToStorage(file);
-  //         saveImageUrlToFirebase(task);
-
-  //         setState(() {
-  //           uploadedTasks.add(task);
-  //         });
-  //       });
-  //     } else {
-  //       print("User has cancelled the selection");
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-
-  List<UploadTask> uploadedTasks = [];
-
-  List<File> selectedFiles = [];
+  var offerData;
+  Future getAllOffers() async {
+    await FirebaseFirestore.instance.collection("Offers").get().then((value) {
+      offerData = value.docs;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,27 +70,7 @@ class _OffersState extends State<Offers> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: constantColors.mainColor,
           onPressed: () {
-          
-            // showDialog(
-            //     context: context,
-            //     builder: (contex) {
-            //       return Container(
-            //         height: 10.h,
-            //         width: 10.h,
-            //         child: Card(
-            //           child: Column(
-            //             children: [
-            //               TextField(
-            //                 controller: destination,
-            //                 decoration: InputDecoration(
-            //                   labelText: "Destination",
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       );
-            //     });
+            context.vRouter.to("/offerUpload");
           },
           child: Icon(Icons.add),
         ),
@@ -159,26 +86,262 @@ class _OffersState extends State<Offers> {
             elevation: 0,
             backgroundColor: constantColors.whiteColor,
             iconTheme: IconThemeData(color: constantColors.blackColor),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(EvaIcons.upload),
-                onPressed: () {},
-              )
-            ]),
-        body: SingleChildScrollView(
-            child: Responsive(
-          mobile: selectedFiles.length == 0
-              ? Container(
-                  child: Center(child: Image.asset("assets/Images/offer.gif")))
-              : Container(),
-          tablet: selectedFiles.length == 0
-              ? Container(
-                  child: Center(child: Image.asset("assets/Images/offer.gif")))
-              : Container(),
-          desktop: selectedFiles.length == 0
-              ? Container(
-                  child: Center(child: Image.asset("assets/Images/offer.gif")))
-              : Container(),
-        )));
+            actions: <Widget>[]),
+        body: FutureBuilder(
+            future: getAllOffers(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Responsive(
+                    mobile: Container(
+                      child: GridView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: offerData.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                        child: Container(
+                          height: 40.h,
+                          width: 30.w,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: Container(
+                                  height: 20.h,
+                                  decoration: BoxDecoration(
+                                      color: constantColors.greyColor,
+                                      image: DecorationImage(
+                                          image: NetworkImage(offerData[index]
+                                              ["imageUrl"]),
+                                          fit: BoxFit.cover),
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  offerData[index]["destinationUrl"],
+                                  style: GoogleFonts.nunito(
+                                      color: constantColors.blackColor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: constantColors.mainColor,
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                  child: Text(
+                                    offerData[index]["destinationUrl"],
+                                    style: GoogleFonts.nunito(
+                                        color: constantColors.blackColor,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: TextButton(
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${offerData[index]["OfferId"]}");
+                                      
+                                        },
+                                        child: Text("Edit book")),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 1, color: constantColors.greyColor)
+                              // borderRadius: BorderRadius.circular(10.sp)
+                              ),
+                        ),
+                      );
+                        },
+                        gridDelegate:
+                            new SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                      ),
+                    ),
+                    tablet: Container(
+                      child: GridView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: offerData.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                        child: Container(
+                          height: 40.h,
+                          width: 30.w,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: Container(
+                                  height: 20.h,
+                                  decoration: BoxDecoration(
+                                      color: constantColors.greyColor,
+                                      image: DecorationImage(
+                                          image: NetworkImage(offerData[index]
+                                              ["imageUrl"]),
+                                          fit: BoxFit.cover),
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  offerData[index]["destinationUrl"],
+                                  style: GoogleFonts.nunito(
+                                      color: constantColors.blackColor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: constantColors.mainColor,
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                  child: Text(
+                                    offerData[index]["destinationUrl"],
+                                    style: GoogleFonts.nunito(
+                                        color: constantColors.blackColor,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: TextButton(
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${offerData[index]["OfferId"]}");
+                                      
+                                        },
+                                        child: Text("Edit book")),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 1, color: constantColors.greyColor)
+                              // borderRadius: BorderRadius.circular(10.sp)
+                              ),
+                        ),
+                      );
+                        },
+                        gridDelegate:
+                            new SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3),
+                      ),
+                    ),
+                  
+                    desktop: Container(
+                      child: GridView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: offerData.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                        child: Container(
+                          height: 40.h,
+                          width: 30.w,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: Container(
+                                  height: 20.h,
+                                  decoration: BoxDecoration(
+                                      color: constantColors.greyColor,
+                                      image: DecorationImage(
+                                          image: NetworkImage(offerData[index]
+                                              ["imageUrl"]),
+                                          fit: BoxFit.cover),
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  offerData[index]["destinationUrl"],
+                                  style: GoogleFonts.nunito(
+                                      color: constantColors.blackColor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: constantColors.mainColor,
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
+                                  child: Text(
+                                    offerData[index]["destinationUrl"],
+                                    style: GoogleFonts.nunito(
+                                        color: constantColors.blackColor,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: TextButton(
+                                        onPressed: () {
+                                          print(
+                                              "Book Id :${offerData[index]["OfferId"]}");
+                                      
+                                        },
+                                        child: Text("Edit book")),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 1, color: constantColors.greyColor)
+                              // borderRadius: BorderRadius.circular(10.sp)
+                              ),
+                        ),
+                      );
+                        },
+                        gridDelegate:
+                            new SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4),
+                      ),
+                    ),
+                    );
+              } else {
+                print("Not done");
+                return Container(
+                  child: Center(
+                    child: Image.asset("assets/Images/offer.gif"),
+                  ),
+                );
+              }
+            }));
   }
 }

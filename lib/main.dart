@@ -3,6 +3,7 @@ import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/Navigation.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
+import 'package:growbymargin_webadmin/Screens/Offers/offerUpload.dart';
 import 'package:growbymargin_webadmin/Screens/Offers/offers.dart';
 import 'package:growbymargin_webadmin/Screens/Product/ManageProduct/manageProduct.dart';
 import 'package:growbymargin_webadmin/Screens/Product/UploadProduct/desktop_view.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           VWidget(path: "/upload", widget: Upload()),
           VWidget(path: "/uploadProducts", widget: UploadProduct()),
           VWidget(path: "/offers", widget: Offers()),
+           VWidget(path: "/offerUpload", widget: OfferUpload()),
           VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
         ],
       );

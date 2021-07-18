@@ -318,59 +318,59 @@ class _DesktopViewState extends State<DesktopView> {
                             fontWeight: FontWeight.normal)),
                   ),
                 ),
-                // Container(
-                //   padding: const EdgeInsets.only(left: 20, right: 20),
-                //   child: TextField(
-                //     controller: bookNameController,
-                //     decoration: InputDecoration(
-                //         labelText: "Book name",
-                //         labelStyle: GoogleFonts.nunito(
-                //             color: Colors.black,
-                //             fontSize: 10.sp,
-                //             fontWeight: FontWeight.normal),
-                //         hintText: "Herbal remedies for life.",
-                //         hintStyle: GoogleFonts.nunito(
-                //             color: Colors.grey,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.normal)),
-                //   ),
-                // ),
-                // Container(
-                //   padding: const EdgeInsets.only(left: 20, right: 40),
-                //   child: TextField(
-                //     controller: bookPriceController,
-                //     decoration: InputDecoration(
-                //         labelText: "Book Price",
-                //         labelStyle: GoogleFonts.nunito(
-                //             color: Colors.black,
-                //             fontSize: 10.sp,
-                //             fontWeight: FontWeight.normal),
-                //         hintText: "ex: 100\$ ",
-                //         hintStyle: GoogleFonts.nunito(
-                //             color: Colors.grey,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.normal)),
-                //   ),
-                // ),
-                // Container(
-                //   padding: const EdgeInsets.only(left: 20, right: 20),
-                //   child: TextField(
-                //     controller: bookDiscrController,
-                //     maxLines: null,
-                //     maxLength: null,
-                //     decoration: InputDecoration(
-                //         labelText: "About the books",
-                //         labelStyle: GoogleFonts.nunito(
-                //             color: Colors.black,
-                //             fontSize: 10.sp,
-                //             fontWeight: FontWeight.normal),
-                //         hintText: "Add discription about this ebook",
-                //         hintStyle: GoogleFonts.nunito(
-                //             color: Colors.grey,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.normal)),
-                //   ),
-                // ),
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: TextField(
+                    controller: bookNameController,
+                    decoration: InputDecoration(
+                        labelText: "Book name",
+                        labelStyle: GoogleFonts.nunito(
+                            color: Colors.black,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.normal),
+                        hintText: "Herbal remedies for life.",
+                        hintStyle: GoogleFonts.nunito(
+                            color: Colors.grey,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 40),
+                  child: TextField(
+                    controller: bookPriceController,
+                    decoration: InputDecoration(
+                        labelText: "Book Price",
+                        labelStyle: GoogleFonts.nunito(
+                            color: Colors.black,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.normal),
+                        hintText: "ex: 100\$ ",
+                        hintStyle: GoogleFonts.nunito(
+                            color: Colors.grey,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: TextField(
+                    controller: bookDiscrController,
+                    maxLines: null,
+                    maxLength: null,
+                    decoration: InputDecoration(
+                        labelText: "About the books",
+                        labelStyle: GoogleFonts.nunito(
+                            color: Colors.black,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.normal),
+                        hintText: "Add discription about this ebook",
+                        hintStyle: GoogleFonts.nunito(
+                            color: Colors.grey,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ),
               ],
             )
           ],
