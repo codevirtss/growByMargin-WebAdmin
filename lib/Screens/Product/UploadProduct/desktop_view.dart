@@ -44,8 +44,6 @@ class _DesktopViewState extends State<DesktopView> {
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
 
-      
-
       Reference reference = FirebaseStorage.instance
           .ref()
           .child("Books")
@@ -72,7 +70,7 @@ class _DesktopViewState extends State<DesktopView> {
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
 
-   //   String? filename = result.files.single.name;
+      //   String? filename = result.files.single.name;
 
       Reference reference = FirebaseStorage.instance
           .ref()
@@ -100,7 +98,7 @@ class _DesktopViewState extends State<DesktopView> {
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
 
-    //  String? filename = result.files.single.name;
+      //  String? filename = result.files.single.name;
 
       Reference reference = FirebaseStorage.instance
           .ref()
@@ -593,91 +591,89 @@ class _DesktopViewState extends State<DesktopView> {
                                                                         1.0.w,
                                                                     horizontal:
                                                                         3.0.h),
-                                                            child: Expanded(
-                                                              child: TextField(
-                                                                controller:
-                                                                    bookDiscrController,
-                                                                style: GoogleFonts.nunito(
+                                                            child: TextField(
+                                                              controller:
+                                                                  bookDiscrController,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              maxLines: 100,
+                                                              minLines: 1,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                isDense: true,
+                                                                isCollapsed:
+                                                                    true,
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets.symmetric(
+                                                                        horizontal:
+                                                                            2.0
+                                                                                .w,
+                                                                        vertical:
+                                                                            2.0.w),
+                                                                labelText:
+                                                                    "Click to Enter Book Description",
+                                                                labelStyle: GoogleFonts.nunito(
                                                                     color: Colors
-                                                                        .black,
+                                                                        .grey,
                                                                     fontSize:
                                                                         8.0.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w300),
-                                                                maxLines: 100,
-                                                                minLines: 1,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  isDense: true,
-                                                                  isCollapsed:
-                                                                      true,
-                                                                  alignLabelWithHint:
-                                                                      false,
-                                                                  floatingLabelBehavior:
-                                                                      FloatingLabelBehavior
-                                                                          .never,
-                                                                  contentPadding: EdgeInsets.symmetric(
-                                                                      horizontal:
-                                                                          2.0.w,
-                                                                      vertical:
-                                                                          2.0.w),
-                                                                  labelText:
-                                                                      "Click to Enter Book Description",
-                                                                  labelStyle: GoogleFonts.nunito(
-                                                                      color: Colors
-                                                                          .grey,
-                                                                      fontSize:
-                                                                          8.0
-                                                                              .sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300),
-                                                                  hintText:
-                                                                      "Eg:- This book is specially designed for herbal remedies that can be followed at home",
-                                                                  hintStyle: GoogleFonts.nunito(
-                                                                      color: Colors
-                                                                          .grey,
-                                                                      fontSize:
-                                                                          8.0
-                                                                              .sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300),
-                                                                  border:
-                                                                      InputBorder
-                                                                          .none,
-                                                                  errorBorder:
-                                                                      InputBorder
-                                                                          .none,
-                                                                  enabledBorder: OutlineInputBorder(
-                                                                      borderSide: BorderSide(
-                                                                          color: Colors.grey[
-                                                                              350]!,
-                                                                          width:
-                                                                              1),
-                                                                      borderRadius:
-                                                                          BorderRadius.all(
-                                                                              Radius.circular(10))),
-                                                                  focusedBorder: OutlineInputBorder(
-                                                                      borderSide: BorderSide(
-                                                                          color: Color(
-                                                                              0xff394C73),
-                                                                          width:
-                                                                              1),
-                                                                      borderRadius:
-                                                                          BorderRadius.all(
-                                                                              Radius.circular(10))),
-                                                                  disabledBorder: OutlineInputBorder(
-                                                                      borderSide: BorderSide(
-                                                                          color: Color(
-                                                                              0xff394C73),
-                                                                          width:
-                                                                              1),
-                                                                      borderRadius:
-                                                                          BorderRadius.all(
-                                                                              Radius.circular(10))),
-                                                                ),
+                                                                hintText:
+                                                                    "Eg:- This book is specially designed for herbal remedies that can be followed at home",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
                                                               ),
                                                             )),
                                                         SizedBox(
@@ -754,21 +750,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                 height: 7.0.w,
                                                                                                 child: Row(
                                                                                                   children: [
-                                                                                                    Expanded(flex: 9, child: 
-                                                                                                    Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h),
-                                                                                                     child:bookPreViewUrl != null ? Text("Preview Book Added", 
-                                                                                                        overflow: TextOverflow.ellipsis,
-                                                                                                         style: GoogleFonts.montserrat(
-                                                                                                           color: Colors.grey, 
-                                                                                                           fontSize: 8.0.sp,
-                                                                                                            fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", 
-                                                                                                        overflow: TextOverflow.ellipsis,
-                                                                                                         style: GoogleFonts.montserrat(
-                                                                                                           color: Colors.grey, 
-                                                                                                           fontSize: 8.0.sp,
-                                                                                                            fontWeight: FontWeight.w500))
-                                                                                                      )
-                                                                                                      ),
+                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookPreViewUrl != null ? Text("Preview Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
                                                                                                     Expanded(
                                                                                                         flex: 1,
                                                                                                         child: GestureDetector(
@@ -791,7 +773,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                               height: 2.0.w,
                                                                                             ),
                                                                                             Padding(
-                                                                                             padding: EdgeInsets.only(bottom: 0.5.w, left: 3.0.h),
+                                                                                              padding: EdgeInsets.only(bottom: 0.5.w, left: 3.0.h),
                                                                                               child: Text(
                                                                                                 "Full Book",
                                                                                                 style: GoogleFonts.montserrat(color: Colors.blueGrey, fontSize: 6.0.sp, fontWeight: FontWeight.w300),
@@ -803,24 +785,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                 height: 7.0.w,
                                                                                                 child: Row(
                                                                                                   children: [
-                                                                                                    Expanded(
-                                                                                                      flex: 9, 
-                                                                                                      child: Container(
-                                                                                                        padding: EdgeInsets.symmetric(horizontal: 1.0.h), 
-                                                                                                        child: bookFullUrl != null ? Text("Full Book Added", 
-                                                                                                        overflow: TextOverflow.ellipsis,
-                                                                                                         style: GoogleFonts.montserrat(
-                                                                                                           color: Colors.grey, 
-                                                                                                           fontSize: 8.0.sp,
-                                                                                                            fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", 
-                                                                                                        overflow: TextOverflow.ellipsis,
-                                                                                                         style: GoogleFonts.montserrat(
-                                                                                                           color: Colors.grey, 
-                                                                                                           fontSize: 8.0.sp,
-                                                                                                            fontWeight: FontWeight.w500))
-                                                                                                            
-                                                                                                            )
-                                                                                                            ),
+                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookFullUrl != null ? Text("Full Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
                                                                                                     Expanded(
                                                                                                         flex: 1,
                                                                                                         child: GestureDetector(
@@ -905,7 +870,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                                     TextButton(
                                                                                                                       child: Text('ok'),
                                                                                                                       onPressed: () {
-                                                                                                                            context.vRouter.to("/home");
+                                                                                                                        context.vRouter.to("/home");
                                                                                                                       },
                                                                                                                     ),
                                                                                                                   ],
@@ -1040,6 +1005,4 @@ class _DesktopViewState extends State<DesktopView> {
           ),
         ));
   }
-
-
 }
