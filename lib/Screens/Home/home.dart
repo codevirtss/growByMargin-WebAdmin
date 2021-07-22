@@ -119,20 +119,40 @@ class _HomeState extends State<Home> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: constantColors.mainColor,
-                                            borderRadius:
-                                                BorderRadius.circular(2.sp)),
-                                        child: Text(
-                                          bookData[index]["bookPrice"],
-                                          style: GoogleFonts.nunito(
-                                              color: constantColors.blackColor,
-                                              fontWeight: FontWeight.w500),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            bookData[index]["bookMrp"],
+                                            style: GoogleFonts.nunito(
+                                                color:
+                                                    constantColors.blackColor,
+                                                fontWeight: FontWeight.w500,
+                                                decoration:
+                                                    TextDecoration.lineThrough),
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: constantColors.mainColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        2.sp)),
+                                            child: Text(
+                                              bookData[index]["bookPrice"],
+                                              style: GoogleFonts.nunito(
+                                                  color:
+                                                      constantColors.blackColor,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       children: [
@@ -216,20 +236,40 @@ class _HomeState extends State<Home> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: constantColors.mainColor,
-                                            borderRadius:
-                                                BorderRadius.circular(2.sp)),
-                                        child: Text(
-                                          bookData[index]["bookPrice"],
-                                          style: GoogleFonts.nunito(
-                                              color: constantColors.blackColor,
-                                              fontWeight: FontWeight.w500),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            bookData[index]["bookMrp"],
+                                            style: GoogleFonts.nunito(
+                                                color:
+                                                    constantColors.blackColor,
+                                                fontWeight: FontWeight.w500,
+                                                decoration:
+                                                    TextDecoration.lineThrough),
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: constantColors.mainColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        2.sp)),
+                                            child: Text(
+                                              bookData[index]["bookPrice"],
+                                              style: GoogleFonts.nunito(
+                                                  color:
+                                                      constantColors.blackColor,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       children: [
@@ -313,20 +353,40 @@ class _HomeState extends State<Home> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: constantColors.mainColor,
-                                            borderRadius:
-                                                BorderRadius.circular(2.sp)),
-                                        child: Text(
-                                          bookData[index]["bookPrice"],
-                                          style: GoogleFonts.nunito(
-                                              color: constantColors.blackColor,
-                                              fontWeight: FontWeight.w500),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            bookData[index]["bookMrp"],
+                                            style: GoogleFonts.nunito(
+                                                color:
+                                                    constantColors.blackColor,
+                                                fontWeight: FontWeight.w500,
+                                                decoration:
+                                                    TextDecoration.lineThrough),
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: constantColors.mainColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        2.sp)),
+                                            child: Text(
+                                              bookData[index]["bookPrice"],
+                                              style: GoogleFonts.nunito(
+                                                  color:
+                                                      constantColors.blackColor,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       children: [

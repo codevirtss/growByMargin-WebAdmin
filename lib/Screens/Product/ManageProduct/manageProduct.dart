@@ -29,6 +29,7 @@ class _ManageProductState extends State<ManageProduct> {
   TextEditingController bookNameController = TextEditingController();
   TextEditingController bookDiscrController = TextEditingController();
   TextEditingController bookPriceController = TextEditingController();
+   TextEditingController bookMrpontroller = TextEditingController();
 
   String? imageUrl;
 
@@ -146,6 +147,7 @@ class _ManageProductState extends State<ManageProduct> {
       imageUrl = bookData["bookCoverImageUrl"];
       bookPreViewUrl = bookData["bookPreviewUrl"];
       bookFullUrl = bookData["fullBookUrl"];
+      bookMrpontroller.text = bookData["bookMrp"];
     });
 
     super.initState();
@@ -186,6 +188,7 @@ class _ManageProductState extends State<ManageProduct> {
                   "bookPreviewUrl": bookPreViewUrl!,
                   "fullBookUrl": bookFullUrl!,
                   "bookId": widget.bookId!,
+                  "bookMrp" : bookMrpontroller.text
                 }).then((value) {
                   context.vRouter.to("/home");
                 });
@@ -373,6 +376,23 @@ class _ManageProductState extends State<ManageProduct> {
                                       fontWeight: FontWeight.normal)),
                             ),
                           ),
+                             Container(
+                            padding: const EdgeInsets.only(left: 20, right: 40),
+                            child: TextField(
+                              controller: bookMrpontroller,
+                              decoration: InputDecoration(
+                                  labelText: "Book MRP",
+                                  labelStyle: GoogleFonts.nunito(
+                                      color: Colors.black,
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.normal),
+                                  hintText: "ex: 100\$ ",
+                                  hintStyle: GoogleFonts.nunito(
+                                      color: Colors.grey,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal)),
+                            ),
+                          ),
                           Container(
                             padding: const EdgeInsets.only(left: 20, right: 40),
                             child: TextField(
@@ -416,7 +436,11 @@ class _ManageProductState extends State<ManageProduct> {
                 ),
             );
           } else {
-            return Text("Not done");
+            return Container(
+                child: Center(
+                  child: Image.asset("assets/Images/home.gif"),
+                ),
+              );
           }
         },
       ),

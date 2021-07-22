@@ -28,6 +28,7 @@ class _DesktopViewState extends State<DesktopView> {
   TextEditingController bookNameController = TextEditingController();
   TextEditingController bookDiscrController = TextEditingController();
   TextEditingController bookPriceController = TextEditingController();
+  TextEditingController bookMrpontroller = TextEditingController();
 
   String? imageUrl;
   String? bookId = Uuid().v4();
@@ -243,7 +244,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 2.0.w,
+                                                          height: 1.0.w,
                                                         ),
                                                         Padding(
                                                           padding:
@@ -265,8 +266,6 @@ class _DesktopViewState extends State<DesktopView> {
                                                         Padding(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                    vertical:
-                                                                        1.0.w,
                                                                     horizontal:
                                                                         3.0.h),
                                                             child: TextField(
@@ -311,12 +310,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w300),
-                                                                border:
-                                                                    InputBorder
-                                                                        .none,
-                                                                errorBorder:
-                                                                    InputBorder
-                                                                        .none,
+                                                               
                                                                 enabledBorder: OutlineInputBorder(
                                                                     borderSide: BorderSide(
                                                                         color: Colors.grey[
@@ -347,7 +341,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                               ),
                                                             )),
                                                         SizedBox(
-                                                          height: 4.0.w,
+                                                          height: 1.0.w,
                                                         ),
                                                         Padding(
                                                           padding:
@@ -450,8 +444,122 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             Radius.circular(10))),
                                                               ),
                                                             )),
-                                                        SizedBox(
-                                                          height: 4.0.w,
+                                                                    SizedBox(
+                                                          height: 1.0.w,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  bottom: 0.5.w,
+                                                                  left: 3.0.h),
+                                                          child: Text(
+                                                            "Book Mrp",
+                                                            style: GoogleFonts.nunito(
+                                                                color: Colors
+                                                                    .blueGrey,
+                                                                fontSize:
+                                                                    6.0.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        1.0.w,
+                                                                    horizontal:
+                                                                        3.0.h),
+                                                            child: TextField(
+                                                              controller:
+                                                                  bookMrpontroller,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                suffixText:
+                                                                    "INR",
+                                                                suffixStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(2.0
+                                                                            .h),
+                                                                labelText:
+                                                                    "Click to Enter Book MRP",
+                                                                labelStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                hintText:
+                                                                    "Eg:- 100",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                              ),
+                                                            )),
+                                                      SizedBox(
+                                                          height: 1.0.w,
                                                         ),
                                                         Padding(
                                                           padding:
@@ -565,7 +673,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                               ),
                                                             )),
                                                         SizedBox(
-                                                          height: 4.0.h,
+                                                          height: 1.0.w,
                                                         ),
                                                         Padding(
                                                           padding:
@@ -676,8 +784,8 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             Radius.circular(10))),
                                                               ),
                                                             )),
-                                                        SizedBox(
-                                                          height: 4.0.h,
+                                                       SizedBox(
+                                                          height: 1.0.w,
                                                         ),
                                                         Container(
                                                           width:
@@ -849,6 +957,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                             "bookDescription": bookDiscrController.text,
                                                                                                             "bookCoverImageUrl": imageUrl!,
                                                                                                             "bookPrice": bookPriceController.text,
+                                                                                                            "bookMrp": bookMrpontroller.text,
                                                                                                             "bookPreviewUrl": bookPreViewUrl!,
                                                                                                             "fullBookUrl": bookFullUrl!,
                                                                                                             "bookId": bookId!,
