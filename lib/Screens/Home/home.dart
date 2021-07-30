@@ -8,6 +8,7 @@ import 'package:growbymargin_webadmin/Utils/Responsive.dart';
 import 'package:growbymargin_webadmin/Utils/Strigns.dart';
 import 'package:growbymargin_webadmin/Utils/colors.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:uuid/uuid.dart';
 import 'package:vrouter/vrouter.dart';
 import 'package:sizer/sizer.dart';
 
@@ -175,6 +176,76 @@ class _HomeState extends State<Home> {
                                               },
                                               child: Text("Edit book")),
                                         ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: TextButton(
+                                              onPressed: () async {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                        content: Text(
+                                                            "Do you want to create offer for this book!"),
+                                                        title: Text(
+                                                            "Alert Dialog"),
+                                                        actions: [
+                                                          TextButton(
+                                                              onPressed:
+                                                                  () async {
+                                                                var offerId =
+                                                                    Uuid().v4();
+                                                                await FirebaseFirestore
+                                                                    .instance
+                                                                    .collection(
+                                                                        "Offers")
+                                                                    .doc(
+                                                                        offerId)
+                                                                    .set({
+                                                                  "type":
+                                                                      "BookOffer",
+                                                                  "offerId":
+                                                                      offerId,
+                                                                  "bookId": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookId"],
+                                                                  "imageUrl": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookCoverImageUrl"]
+                                                                }).whenComplete(
+                                                                        () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return AlertDialog(
+                                                                          content:
+                                                                              Text("Offer Created Successfully"),
+                                                                          title:
+                                                                              Text("Succes"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: Text("oK"))
+                                                                          ],
+                                                                        );
+                                                                      });
+                                                                });
+                                                              },
+                                                              child: Text(
+                                                                  "Create Offer"))
+                                                        ],
+                                                      );
+                                                    });
+                                              },
+                                              child: Text("Create Offer")),
+                                        ),
                                       ],
                                     )
                                   ],
@@ -292,6 +363,76 @@ class _HomeState extends State<Home> {
                                               },
                                               child: Text("Edit book")),
                                         ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: TextButton(
+                                              onPressed: () async {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                          content: Text(
+                                                              "Do you want to create offer for this book!"),
+                                                          title: Text(
+                                                              "Alert Dialog"),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed:
+                                                                  () async {
+                                                                var offerId =
+                                                                    Uuid().v4();
+                                                                await FirebaseFirestore
+                                                                    .instance
+                                                                    .collection(
+                                                                        "Offers")
+                                                                    .doc(
+                                                                        offerId)
+                                                                    .set({
+                                                                  "type":
+                                                                      "BookOffer",
+                                                                  "offerId":
+                                                                      offerId,
+                                                                  "bookId": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookId"],
+                                                                  "imageUrl": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookCoverImageUrl"]
+                                                                }).whenComplete(
+                                                                        () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return AlertDialog(
+                                                                          content:
+                                                                              Text("Offer Created Successfully"),
+                                                                          title:
+                                                                              Text("Succes"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: Text("oK"))
+                                                                          ],
+                                                                        );
+                                                                      });
+                                                                });
+                                                              },
+                                                              child: Text(
+                                                                  "Create Offer!"),
+                                                            )
+                                                          ]);
+                                                    });
+                                              },
+                                              child: Text("Create Offer")),
+                                        ),
                                       ],
                                     )
                                   ],
@@ -408,6 +549,76 @@ class _HomeState extends State<Home> {
                                                             .fade));
                                               },
                                               child: Text("Edit book")),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: TextButton(
+                                              onPressed: () async {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                        content: Text(
+                                                            "Do you want to create offer for this book!"),
+                                                        title: Text(
+                                                            "Alert Dialog"),
+                                                        actions: [
+                                                          TextButton(
+                                                              onPressed:
+                                                                  () async {
+                                                                var offerId =
+                                                                    Uuid().v4();
+                                                                await FirebaseFirestore
+                                                                    .instance
+                                                                    .collection(
+                                                                        "Offers")
+                                                                    .doc(
+                                                                        offerId)
+                                                                    .set({
+                                                                  "type":
+                                                                      "BookOffer",
+                                                                  "offerId":
+                                                                      offerId,
+                                                                  "bookId": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookId"],
+                                                                  "imageUrl": bookData[
+                                                                          index]
+                                                                      [
+                                                                      "bookCoverImageUrl"]
+                                                                }).whenComplete(
+                                                                        () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return AlertDialog(
+                                                                          content:
+                                                                              Text("Offer Created Successfully"),
+                                                                          title:
+                                                                              Text("Succes"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: Text("oK"))
+                                                                          ],
+                                                                        );
+                                                                      });
+                                                                });
+                                                              },
+                                                              child: Text(
+                                                                  "Create Offer"))
+                                                        ],
+                                                      );
+                                                    });
+                                              },
+                                              child: Text("Create Offer")),
                                         ),
                                       ],
                                     )

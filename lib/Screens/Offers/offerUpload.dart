@@ -81,6 +81,7 @@ class _OfferUploadState extends State<OfferUpload> {
                         "destinationUrl": destination.text,
                         "imageUrl": imageUrl,
                         "OfferId": offerId!,
+                        "type": "UrlOffer"
                       }).whenComplete(() {
                           return showDialog<void>(
                     context: context,
