@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:growbymargin_webadmin/Screens/Product/ManageProduct/manageProduct.dart';
@@ -51,23 +51,29 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               ListTile(
-                  title: Text('LogOut as Admin'),
-                  onTap: () {
-                    firebaseAuthOperations.logOutasAdmin(context);
-                    Navigator.pop(context);
-                  }),
-              Divider(),
+                title: Text('View All User!'),
+                onTap: () {
+                  context.vRouter.to("/allUsers");
+                },
+              ),
               ListTile(
                   title: Text('Upload Your Products!'),
                   onTap: () {
                     context.vRouter.to("/upload");
                   }),
               ListTile(
-                title: Text("Offers"),
+                title: Text("Offers!"),
                 onTap: () {
                   context.vRouter.to("/offers");
                 },
-              )
+              ),
+              Divider(),
+              ListTile(
+                  title: Text('LogOut as Admin'),
+                  onTap: () {
+                    firebaseAuthOperations.logOutasAdmin(context);
+                    Navigator.pop(context);
+                  }),
             ],
           ),
         ),
