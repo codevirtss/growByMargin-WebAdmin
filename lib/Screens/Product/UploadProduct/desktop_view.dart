@@ -485,7 +485,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                               decoration:
                                                                   InputDecoration(
                                                                 suffixText:
-                                                                    "INR",
+                                                                    "USD",
                                                                 suffixStyle: GoogleFonts.nunito(
                                                                     color: Colors
                                                                         .grey,
@@ -599,7 +599,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                               decoration:
                                                                   InputDecoration(
                                                                 suffixText:
-                                                                    "INR",
+                                                                    "USD",
                                                                 suffixStyle: GoogleFonts.nunito(
                                                                     color: Colors
                                                                         .grey,

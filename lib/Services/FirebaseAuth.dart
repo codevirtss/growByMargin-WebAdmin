@@ -21,7 +21,7 @@ class FirebaseAuthOperations {
       BuildContext context, String email, String password) async {
     await auth
         .signInWithEmailAndPassword(
-            email: "$email@growbymargin.com", password: password)
+            email: "$email@remedieslifetime.com", password: password)
         .then((value) async {
       context.vRouter.to("/home");
     });

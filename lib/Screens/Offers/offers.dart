@@ -121,7 +121,9 @@ class _OffersState extends State<Offers> {
                                     Padding(
                                       padding: EdgeInsets.only(left: 10),
                                       child: Text(
-                                        offerData[index]["destinationUrl"],
+                                        offerData[index]["type"] == "UrlOffer"
+                                            ? offerData[index]["destinationUrl"]
+                                            : "",
                                         style: GoogleFonts.nunito(
                                             color: constantColors.blackColor,
                                             fontWeight: FontWeight.w500),

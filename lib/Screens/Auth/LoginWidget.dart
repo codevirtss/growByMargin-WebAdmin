@@ -32,7 +32,7 @@ class Login_Moblie extends StatelessWidget {
         Container(
             padding: EdgeInsets.only(bottom: 50),
             child: Text(
-              "Admin Login @GrowByMargin.com",
+              "Admin Login @Remedieslifetime.com",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 10.sp,
@@ -43,7 +43,7 @@ class Login_Moblie extends StatelessWidget {
           child: TextField(
             controller: emailController,
             decoration: InputDecoration(
-              suffixText: "@growbymargin.com",
+              suffixText: "@remedieslifetime.com",
               labelText: "Admin Email address",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
@@ -114,7 +114,7 @@ class Login_Desktop extends StatelessWidget {
                   Container(
                       padding: EdgeInsets.only(bottom: 50),
                       child: Text(
-                        "Admin Login @GrowByMargin.com",
+                        "Admin Login @Remedieslifetime.com",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 10.sp,
@@ -125,7 +125,7 @@ class Login_Desktop extends StatelessWidget {
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        suffixText: "@growbymargin.com",
+                        suffixText: "@remedieslifetime.com",
                         labelText: "Admin Email address",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(2.sp)),
@@ -184,7 +184,7 @@ class Login_tab extends StatelessWidget {
         Container(
             padding: EdgeInsets.only(bottom: 50),
             child: Text(
-              "Admin Login @GrowByMargin.com",
+              "Admin Login @Remedieslifetime.com",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 10.sp,
@@ -196,7 +196,7 @@ class Login_tab extends StatelessWidget {
             controller: emailController,
             decoration: InputDecoration(
               labelText: "Admin Email address",
-              suffixText: "@growbymargin.com",
+              suffixText: "@remedieslifetime.com",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(2.sp)),
             ),
