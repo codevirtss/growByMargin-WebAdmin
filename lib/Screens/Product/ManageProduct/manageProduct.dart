@@ -29,7 +29,7 @@ class _ManageProductState extends State<ManageProduct> {
   TextEditingController bookNameController = TextEditingController();
   TextEditingController bookDiscrController = TextEditingController();
   TextEditingController bookPriceController = TextEditingController();
-   TextEditingController bookMrpontroller = TextEditingController();
+  TextEditingController bookMrpontroller = TextEditingController();
 
   String? imageUrl;
 
@@ -69,7 +69,7 @@ class _ManageProductState extends State<ManageProduct> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
@@ -97,7 +97,7 @@ class _ManageProductState extends State<ManageProduct> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
@@ -188,7 +188,7 @@ class _ManageProductState extends State<ManageProduct> {
                   "bookPreviewUrl": bookPreViewUrl!,
                   "fullBookUrl": bookFullUrl!,
                   "bookId": widget.bookId!,
-                  "bookMrp" : bookMrpontroller.text
+                  "bookMrp": bookMrpontroller.text
                 }).then((value) {
                   context.vRouter.to("/home");
                 });
@@ -200,247 +200,241 @@ class _ManageProductState extends State<ManageProduct> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
-             child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 30.h,
-                                width: 30.h,
-                                child: Stack(
-                                  alignment: Alignment.bottomRight,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        pickCoverImage();
-                                      },
-                                      icon: Icon(
-                                        EvaIcons.edit2,
-                                        size: 20.sp,
-                                        color: constantColors.mainColor,
-                                      ),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 30.h,
+                              width: 30.h,
+                              child: Stack(
+                                alignment: Alignment.bottomRight,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      pickCoverImage();
+                                    },
+                                    icon: Icon(
+                                      EvaIcons.edit2,
+                                      size: 20.sp,
+                                      color: constantColors.mainColor,
                                     ),
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  color: constantColors.greyColor,
+                                  borderRadius: BorderRadius.circular(10.sp),
+                                  border: Border.all(
                                     color: constantColors.greyColor,
-                                    borderRadius: BorderRadius.circular(10.sp),
-                                    border: Border.all(
-                                      color: constantColors.greyColor,
-                                    ),
-                                    image: DecorationImage(
-                                        image: imageUrl != null
-                                            ? NetworkImage(imageUrl!)
-                                            : NetworkImage(bookData[
-                                                "bookCoverImageUrl"]))),
-                              )),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    height: 10.h,
-                                    width: 50.w,
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            pickPreviewFile();
-                                          },
-                                          icon: Icon(
-                                            EvaIcons.fileAdd,
-                                            size: 20.sp,
-                                            color: constantColors.mainColor,
-                                          ),
+                                  ),
+                                  image: DecorationImage(
+                                      image: imageUrl != null
+                                          ? NetworkImage(imageUrl!)
+                                          : NetworkImage(
+                                              bookData["bookCoverImageUrl"]))),
+                            )),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  height: 10.h,
+                                  width: 50.w,
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          pickPreviewFile();
+                                        },
+                                        icon: Icon(
+                                          EvaIcons.fileAdd,
+                                          size: 20.sp,
+                                          color: constantColors.mainColor,
                                         ),
-                                        hSizedBox2,
-                                        bookPreViewUrl != null
-                                            ? Text(
-                                                "Previwe Book Added",
-                                                style: GoogleFonts.nunito(
-                                                    color: Colors.black,
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              )
-                                            : Text(
-                                                "Add Previwe Book",
-                                                style: GoogleFonts.nunito(
-                                                    color: Colors.black,
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5.sp),
-                                        color: constantColors.greyColor)),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Container(
-                                    height: 10.h,
-                                    width: 50.w,
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            pickFullFile();
-                                          },
-                                          icon: Icon(
-                                            EvaIcons.fileAdd,
-                                            size: 20.sp,
-                                            color: constantColors.mainColor,
-                                          ),
+                                      ),
+                                      hSizedBox2,
+                                      bookPreViewUrl != null
+                                          ? Text(
+                                              "Previwe Book Added",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          : Text(
+                                              "Add Previwe Book",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                    ],
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.sp),
+                                      color: constantColors.greyColor)),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              Container(
+                                  height: 10.h,
+                                  width: 50.w,
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          pickFullFile();
+                                        },
+                                        icon: Icon(
+                                          EvaIcons.fileAdd,
+                                          size: 20.sp,
+                                          color: constantColors.mainColor,
                                         ),
-                                        hSizedBox2,
-                                        bookFullUrl != null
-                                            ? Text(
-                                                "Full Book Added",
-                                                style: GoogleFonts.nunito(
-                                                    color: Colors.black,
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              )
-                                            : Text(
-                                                "Add Full Book",
-                                                style: GoogleFonts.nunito(
-                                                    color: Colors.black,
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5.sp),
-                                        color: constantColors.greyColor)),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: hBox2, top: vBox2),
-                            child: Text(
-                              "Enter your  collection name",
-                              style: GoogleFonts.nunito(
-                                  color: Colors.black,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w600),
-                            ),
+                                      ),
+                                      hSizedBox2,
+                                      bookFullUrl != null
+                                          ? Text(
+                                              "Full Book Added",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          : Text(
+                                              "Add Full Book",
+                                              style: GoogleFonts.nunito(
+                                                  color: Colors.black,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                    ],
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.sp),
+                                      color: constantColors.greyColor)),
+                            ],
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                            child: TextField(
-                              controller: collectionNameController,
-                              decoration: InputDecoration(
-                                  labelText: "Collection name",
-                                  labelStyle: GoogleFonts.nunito(
-                                      color: Colors.black,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.normal),
-                                  hintText: "HurbalLife",
-                                  hintStyle: GoogleFonts.nunito(
-                                      color: Colors.grey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: hBox2, top: vBox2),
+                          child: Text(
+                            "Enter your  collection name",
+                            style: GoogleFonts.nunito(
+                                color: Colors.black,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w600),
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                            child: TextField(
-                              controller: bookNameController,
-                              decoration: InputDecoration(
-                                  labelText: "Book name",
-                                  labelStyle: GoogleFonts.nunito(
-                                      color: Colors.black,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.normal),
-                                  hintText: "Herbal remedies for life.",
-                                  hintStyle: GoogleFonts.nunito(
-                                      color: Colors.grey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: TextField(
+                            controller: collectionNameController,
+                            decoration: InputDecoration(
+                                labelText: "Collection name",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "HurbalLife",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
                           ),
-                             Container(
-                            padding: const EdgeInsets.only(left: 20, right: 40),
-                            child: TextField(
-                              controller: bookMrpontroller,
-                              decoration: InputDecoration(
-                                  labelText: "Book MRP",
-                                  labelStyle: GoogleFonts.nunito(
-                                      color: Colors.black,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.normal),
-                                  hintText: "ex: 100\$ ",
-                                  hintStyle: GoogleFonts.nunito(
-                                      color: Colors.grey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: TextField(
+                            controller: bookNameController,
+                            decoration: InputDecoration(
+                                labelText: "Book name",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "Herbal remedies for life.",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 20, right: 40),
-                            child: TextField(
-                              controller: bookPriceController,
-                              decoration: InputDecoration(
-                                  labelText: "Book Price",
-                                  labelStyle: GoogleFonts.nunito(
-                                      color: Colors.black,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.normal),
-                                  hintText: "ex: 100\$ ",
-                                  hintStyle: GoogleFonts.nunito(
-                                      color: Colors.grey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: bookMrpontroller,
+                            decoration: InputDecoration(
+                                labelText: "Book MRP",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: 100\$ ",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                            child: TextField(
-                              controller: bookDiscrController,
-                              maxLines: null,
-                              maxLength: null,
-                              decoration: InputDecoration(
-                                  labelText: "About the books",
-                                  labelStyle: GoogleFonts.nunito(
-                                      color: Colors.black,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.normal),
-                                  hintText: "Add discription about this ebook",
-                                  hintStyle: GoogleFonts.nunito(
-                                      color: Colors.grey,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: bookPriceController,
+                            decoration: InputDecoration(
+                                labelText: "Book Price",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: 100\$ ",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: TextField(
+                            controller: bookDiscrController,
+                            maxLines: null,
+                            maxLength: null,
+                            decoration: InputDecoration(
+                                labelText: "About the books",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "Add discription about this ebook",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
+              ),
             );
           } else {
             return Container(
-                child: Center(
-                  child: Image.asset("assets/Images/home.gif"),
-                ),
-              );
+              child: Center(
+                child: Image.asset("assets/Images/home.gif"),
+              ),
+            );
           }
         },
       ),

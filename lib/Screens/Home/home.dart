@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Growbymargin Admin Web',
+          'Remedies LifeTime Admin Web',
           style: TextStyle(color: constantColors.blackColor),
         ),
         backgroundColor: constantColors.mainColor,

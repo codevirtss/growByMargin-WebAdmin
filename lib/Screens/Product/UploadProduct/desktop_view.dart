@@ -66,7 +66,7 @@ class _DesktopViewState extends State<DesktopView> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
@@ -94,7 +94,7 @@ class _DesktopViewState extends State<DesktopView> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
@@ -858,7 +858,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                 height: 7.0.w,
                                                                                                 child: Row(
                                                                                                   children: [
-                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookPreViewUrl != null ? Text("Preview Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
+                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookPreViewUrl != null ? Text("Preview Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.pdf", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
                                                                                                     Expanded(
                                                                                                         flex: 1,
                                                                                                         child: GestureDetector(
@@ -893,7 +893,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                 height: 7.0.w,
                                                                                                 child: Row(
                                                                                                   children: [
-                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookFullUrl != null ? Text("Full Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.epub", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
+                                                                                                    Expanded(flex: 9, child: Container(padding: EdgeInsets.symmetric(horizontal: 1.0.h), child: bookFullUrl != null ? Text("Full Book Added", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)) : Text("bhukss/hshsbkoisk.pdf", overflow: TextOverflow.ellipsis, style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 8.0.sp, fontWeight: FontWeight.w500)))),
                                                                                                     Expanded(
                                                                                                         flex: 1,
                                                                                                         child: GestureDetector(

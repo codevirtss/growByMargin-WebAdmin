@@ -66375,7 +66375,7 @@ s=2
 return P.K(O.jf(p,p.ges().ex(0,"BookCollection")).jF(0).ay(0,new Y.ae2(q),t.P),$async$rJ)
 case 2:return P.C(null,r)}})
 return P.D($async$rJ,r)},
-K:function(a,b){var s=null,r=E.Tj(s,this.d.a,s,new T.dz(C.l,s,s),L.a2("Growbymargin Admin Web",s,s,s,A.j1(s,s,C.k,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s),s,s)),q=E.fA(T.cg(H.a([Q.Gl(s,new Y.adY(b),s,L.a2("View All User!",s,s,s,s,s,s)),Q.Gl(s,new Y.adZ(b),s,L.a2("Upload Your Products!",s,s,s,s,s,s)),Q.Gl(s,new Y.ae_(b),s,L.a2("Offers!",s,s,s,s,s,s)),Z.apK(),Q.Gl(s,new Y.ae0(b),s,L.a2("LogOut as Admin",s,s,s,s,s,s))],t.p),C.Q,C.x,C.w),s)
+K:function(a,b){var s=null,r=E.Tj(s,this.d.a,s,new T.dz(C.l,s,s),L.a2("Remedies LifeTime Admin Web",s,s,s,A.j1(s,s,C.k,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s),s,s)),q=E.fA(T.cg(H.a([Q.Gl(s,new Y.adY(b),s,L.a2("View All User!",s,s,s,s,s,s)),Q.Gl(s,new Y.adZ(b),s,L.a2("Upload Your Products!",s,s,s,s,s,s)),Q.Gl(s,new Y.ae_(b),s,L.a2("Offers!",s,s,s,s,s,s)),Z.apK(),Q.Gl(s,new Y.ae0(b),s,L.a2("LogOut as Admin",s,s,s,s,s,s))],t.p),C.Q,C.x,C.w),s)
 return M.ob(r,C.l,B.Yr(new Y.ae1(this),this.rJ(),t.z),new Z.EV(q,s),s)}}
 Y.ae2.prototype={
 $1:function(a){this.a.e=a.glI(a)},
@@ -66915,7 +66915,7 @@ return P.D($async$en,r)},
 js:function(){var s=0,r=P.E(t.z),q=this,p,o,n,m,l,k,j,i
 var $async$js=P.z(function(a,b){if(a===1)return P.B(b,r)
 while(true)switch(s){case 0:s=2
-return P.K($.p7().hP(!0,!1,H.a(["epub"],t.s),C.bk),$async$js)
+return P.K($.p7().hP(!0,!1,H.a(["pdf"],t.s),C.bk),$async$js)
 case 2:i=b
 if(i!=null){p=i.a
 o=J.bx(p)
@@ -66940,7 +66940,7 @@ return P.D($async$js,r)},
 jr:function(){var s=0,r=P.E(t.z),q=this,p,o,n,m,l,k,j,i
 var $async$jr=P.z(function(a,b){if(a===1)return P.B(b,r)
 while(true)switch(s){case 0:s=2
-return P.K($.p7().hP(!0,!1,H.a(["epub"],t.s),C.bk),$async$jr)
+return P.K($.p7().hP(!0,!1,H.a(["pdf"],t.s),C.bk),$async$jr)
 case 2:i=b
 if(i!=null){p=i.a
 o=J.bx(p)
@@ -67192,7 +67192,7 @@ return P.D($async$en,r)},
 js:function(){var s=0,r=P.E(t.z),q=this,p,o,n,m,l,k,j
 var $async$js=P.z(function(a,b){if(a===1)return P.B(b,r)
 while(true)switch(s){case 0:s=2
-return P.K($.p7().hP(!0,!1,H.a(["epub"],t.s),C.bk),$async$js)
+return P.K($.p7().hP(!0,!1,H.a(["pdf"],t.s),C.bk),$async$js)
 case 2:j=b
 if(j!=null){p=J.um(j.a).c
 o=$.aB
@@ -67212,7 +67212,7 @@ return P.D($async$js,r)},
 jr:function(){var s=0,r=P.E(t.z),q=this,p,o,n,m,l,k,j
 var $async$jr=P.z(function(a,b){if(a===1)return P.B(b,r)
 while(true)switch(s){case 0:s=2
-return P.K($.p7().hP(!0,!1,H.a(["epub"],t.s),C.bk),$async$jr)
+return P.K($.p7().hP(!0,!1,H.a(["pdf"],t.s),C.bk),$async$jr)
 case 2:j=b
 if(j!=null){p=J.um(j.a).c
 o=$.aB
@@ -67484,7 +67484,7 @@ X.acG.prototype={
 $0:function(){E.f7(!0,new X.acF(this.a),this.b,t.z)},
 $S:0}
 X.acF.prototype={
-$1:function(c2){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5=null,b6="width",b7="height",b8="bhukss/hshsbkoisk.epub",b9=P.aqk(10,10),c0=$.ac,c1=2*(c0==null?H.c(H.i(b6)):c0)/100
+$1:function(c2){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5=null,b6="width",b7="height",b8="bhukss/hshsbkoisk.pdf",b9=P.aqk(10,10),c0=$.ac,c1=2*(c0==null?H.c(H.i(b6)):c0)/100
 c1=K.cK(new P.aS(c1,c1))
 s=c0
 r=$.b6

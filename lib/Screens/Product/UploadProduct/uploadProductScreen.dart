@@ -65,7 +65,7 @@ class _UploadProductState extends State<UploadProduct> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
@@ -93,7 +93,7 @@ class _UploadProductState extends State<UploadProduct> {
       type: FileType.custom,
       allowCompression: true,
       allowMultiple: false,
-      allowedExtensions: ['epub'],
+      allowedExtensions: ['pdf'],
     );
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
