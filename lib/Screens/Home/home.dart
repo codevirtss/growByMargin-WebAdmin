@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:growbymargin_webadmin/Screens/Product/ManageProduct/manageProduct.dart';
 import 'package:growbymargin_webadmin/Services/FirebaseAuth.dart';
@@ -105,7 +106,7 @@ class _HomeState extends State<Home> {
                                       padding:
                                           EdgeInsets.only(left: 10, right: 10),
                                       child: Container(
-                                        height: 20.h,
+                                        height: 10.h,
                                         decoration: BoxDecoration(
                                             color: constantColors.greyColor,
                                             image: DecorationImage(
@@ -253,6 +254,34 @@ class _HomeState extends State<Home> {
                                               child: Text("Create Offer")),
                                         ),
                                       ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[300],
+                                            borderRadius:
+                                                BorderRadius.circular(3.sp)),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              print("copping bookId ....");
+                                              await Clipboard.setData(ClipboardData(
+                                                  text:
+                                                      '${bookData[index]["bookId"]}'));
+                                            },
+                                            child: Flexible(
+                                              child: Text(
+                                                '${bookData[index]["bookId"]}',
+                                                maxLines: 2,
+                                                softWrap: false,
+                                                overflow: TextOverflow.clip,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     )
                                   ],
                                 ),
