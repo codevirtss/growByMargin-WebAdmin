@@ -30,6 +30,10 @@ class _ManageProductState extends State<ManageProduct> {
   TextEditingController bookDiscrController = TextEditingController();
   TextEditingController bookPriceController = TextEditingController();
   TextEditingController bookMrpontroller = TextEditingController();
+  TextEditingController numberOfPages = TextEditingController();
+  TextEditingController language = TextEditingController();
+  TextEditingController author = TextEditingController();
+  TextEditingController bookReview = TextEditingController();
 
   String? imageUrl;
 
@@ -148,6 +152,10 @@ class _ManageProductState extends State<ManageProduct> {
       bookPreViewUrl = bookData["bookPreviewUrl"];
       bookFullUrl = bookData["fullBookUrl"];
       bookMrpontroller.text = bookData["bookMrp"];
+      language.text = bookData["bookLanguage"];
+      author.text = bookData["bookAuthor"];
+      bookReview.text = bookData["bookReview"];
+      numberOfPages.text = bookData["bookPages"];
     });
 
     super.initState();
@@ -188,7 +196,11 @@ class _ManageProductState extends State<ManageProduct> {
                   "bookPreviewUrl": bookPreViewUrl!,
                   "fullBookUrl": bookFullUrl!,
                   "bookId": widget.bookId!,
-                  "bookMrp": bookMrpontroller.text
+                  "bookMrp": bookMrpontroller.text,
+                  "bookAuthor": author.text,
+                  "bookLanguage": language.text,
+                  "bookPages": numberOfPages.text,
+                  "bookReview": bookReview.text,
                 }).then((value) {
                   context.vRouter.to("/home");
                 });
@@ -398,6 +410,74 @@ class _ManageProductState extends State<ManageProduct> {
                                     fontSize: 10.sp,
                                     fontWeight: FontWeight.normal),
                                 hintText: "ex: 100\$ ",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: author,
+                            decoration: InputDecoration(
+                                labelText: "Book Author",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: Vishal Nishad",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: numberOfPages,
+                            decoration: InputDecoration(
+                                labelText: "Number of pages",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: 180",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: language,
+                            decoration: InputDecoration(
+                                labelText: "Book Language",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: English ",
+                                hintStyle: GoogleFonts.nunito(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 20, right: 40),
+                          child: TextField(
+                            controller: bookReview,
+                            decoration: InputDecoration(
+                                labelText: "Book Review",
+                                labelStyle: GoogleFonts.nunito(
+                                    color: Colors.black,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.normal),
+                                hintText: "ex: 4.9 ",
                                 hintStyle: GoogleFonts.nunito(
                                     color: Colors.grey,
                                     fontSize: 18,

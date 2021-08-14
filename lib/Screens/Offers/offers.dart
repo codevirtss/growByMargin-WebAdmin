@@ -145,7 +145,7 @@ class _OffersState extends State<Offers> {
                                                   builder:
                                                       (BuildContext context) {
                                                     return AlertDialog(
-                                                      title: Text('Aler'),
+                                                      title: Text('Alert'),
                                                       content:
                                                           SingleChildScrollView(
                                                         child: ListBody(

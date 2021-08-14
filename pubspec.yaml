@@ -22,7 +22,6 @@ environment:
 
 dependencies:
   assets_indexer: ^0.0.9
-  
   cloud_firestore: ^2.3.0
   cupertino_icons: ^1.0.2
   desktop_window: ^0.4.0
@@ -37,6 +36,7 @@ dependencies:
   flutter_sizer: ^1.0.3
   font_awesome_flutter: ^9.1.0
   google_fonts: ^2.1.0
+  oktoast: ^3.1.1
   page_transition: ^2.0.2
   sizer: ^2.0.13
   url_strategy: ^0.2.0

@@ -29,6 +29,11 @@ class _DesktopViewState extends State<DesktopView> {
   TextEditingController bookDiscrController = TextEditingController();
   TextEditingController bookPriceController = TextEditingController();
   TextEditingController bookMrpontroller = TextEditingController();
+  TextEditingController numberOfPages = TextEditingController();
+  TextEditingController language = TextEditingController();
+  TextEditingController author = TextEditingController();
+  TextEditingController bookReview = TextEditingController();
+
 
   String? imageUrl;
   String? bookId = Uuid().v4();
@@ -310,7 +315,6 @@ class _DesktopViewState extends State<DesktopView> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w300),
-                                                               
                                                                 enabledBorder: OutlineInputBorder(
                                                                     borderSide: BorderSide(
                                                                         color: Colors.grey[
@@ -444,7 +448,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             Radius.circular(10))),
                                                               ),
                                                             )),
-                                                                    SizedBox(
+                                                        SizedBox(
                                                           height: 1.0.w,
                                                         ),
                                                         Padding(
@@ -558,7 +562,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             Radius.circular(10))),
                                                               ),
                                                             )),
-                                                      SizedBox(
+                                                        SizedBox(
                                                           height: 1.0.w,
                                                         ),
                                                         Padding(
@@ -629,6 +633,431 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             .w300),
                                                                 hintText:
                                                                     "Eg:- 100",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                              ),
+                                                            )),
+                                                        SizedBox(
+                                                          height: 1.0.w,
+                                                        ),
+                                                         Row(
+                                                           children: [
+                                                             
+                                                             Padding(
+                                                              padding:
+                                                                  EdgeInsets.only(
+                                                                      bottom: 0.5.w,
+                                                                      left: 3.0.h),
+                                                              child: Text(
+                                                                "Book Author name",
+                                                                style: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .blueGrey,
+                                                                    fontSize:
+                                                                        6.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                              ),
+                                                        ),
+                                                           ],
+                                                         ),
+                                                        Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        1.0.w,
+                                                                    horizontal:
+                                                                        3.0.h),
+                                                            child: TextField(
+                                                              controller:
+                                                                  author,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(2.0
+                                                                            .h),
+                                                                labelText:
+                                                                    "Click to Enter book author name",
+                                                                labelStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                hintText:
+                                                                    "Eg:- Vishal Nishad",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                              ),
+                                                            )),
+                                                        SizedBox(
+                                                          height: 1.0.w,
+                                                        ),
+                                                         Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  bottom: 0.5.w,
+                                                                  left: 3.0.h),
+                                                          child: Text(
+                                                            "Book Review",
+                                                            style: GoogleFonts.nunito(
+                                                                color: Colors
+                                                                    .blueGrey,
+                                                                fontSize:
+                                                                    6.0.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        1.0.w,
+                                                                    horizontal:
+                                                                        3.0.h),
+                                                            child: TextField(
+                                                              controller:
+                                                                  bookReview,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(2.0
+                                                                            .h),
+                                                                labelText:
+                                                                    "Click to Enter Book Review",
+                                                                labelStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                hintText:
+                                                                    "Eg:- 4.9",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                              ),
+                                                            )),
+                                                        SizedBox(
+                                                          height: 1.0.w,
+                                                        ),
+                                                         Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  bottom: 0.5.w,
+                                                                  left: 3.0.h),
+                                                          child: Text(
+                                                            "Book Language",
+                                                            style: GoogleFonts.nunito(
+                                                                color: Colors
+                                                                    .blueGrey,
+                                                                fontSize:
+                                                                    6.0.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        1.0.w,
+                                                                    horizontal:
+                                                                        3.0.h),
+                                                            child: TextField(
+                                                              controller:
+                                                                  language,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                               
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(2.0
+                                                                            .h),
+                                                                labelText:
+                                                                    "Click to Enter Book Language",
+                                                                labelStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                hintText:
+                                                                    "Eg:- English",
+                                                                hintStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                                errorBorder:
+                                                                    InputBorder
+                                                                        .none,
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            350]!,
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                                disabledBorder: OutlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Color(
+                                                                            0xff394C73),
+                                                                        width:
+                                                                            1),
+                                                                    borderRadius:
+                                                                        BorderRadius.all(
+                                                                            Radius.circular(10))),
+                                                              ),
+                                                            )),
+                                                        SizedBox(
+                                                          height: 1.0.w,
+                                                        ),
+                                                                 Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  bottom: 0.5.w,
+                                                                  left: 3.0.h),
+                                                          child: Text(
+                                                            "Number Of Pages",
+                                                            style: GoogleFonts.nunito(
+                                                                color: Colors
+                                                                    .blueGrey,
+                                                                fontSize:
+                                                                    6.0.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    vertical:
+                                                                        1.0.w,
+                                                                    horizontal:
+                                                                        3.0.h),
+                                                            child: TextField(
+                                                              controller:
+                                                                  numberOfPages,
+                                                              style: GoogleFonts.nunito(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      8.0.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                               
+                                                                alignLabelWithHint:
+                                                                    false,
+                                                                floatingLabelBehavior:
+                                                                    FloatingLabelBehavior
+                                                                        .never,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(2.0
+                                                                            .h),
+                                                                labelText:
+                                                                    "Click to Enter no of Pages",
+                                                                labelStyle: GoogleFonts.nunito(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    fontSize:
+                                                                        8.0.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300),
+                                                                hintText:
+                                                                    "Eg:- 180",
                                                                 hintStyle: GoogleFonts.nunito(
                                                                     color: Colors
                                                                         .grey,
@@ -784,7 +1213,7 @@ class _DesktopViewState extends State<DesktopView> {
                                                                             Radius.circular(10))),
                                                               ),
                                                             )),
-                                                       SizedBox(
+                                                        SizedBox(
                                                           height: 1.0.w,
                                                         ),
                                                         Container(
@@ -960,6 +1389,10 @@ class _DesktopViewState extends State<DesktopView> {
                                                                                                             "bookMrp": bookMrpontroller.text,
                                                                                                             "bookPreviewUrl": bookPreViewUrl!,
                                                                                                             "fullBookUrl": bookFullUrl!,
+                                                                                                            "bookReview" : bookReview.text,
+                                                                                                            "bookPages": numberOfPages.text,
+                                                                                                            "bookAuthor" : author.text,
+                                                                                                            "bookLanguage": language.text,
                                                                                                             "bookId": bookId!,
                                                                                                           }).whenComplete(() {
                                                                                                             return showDialog<void>(
