@@ -35,7 +35,8 @@ class _OffersState extends State<Offers> {
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
 
-      String? filename = result.files.single.name;
+   
+   
 
       Reference reference = FirebaseStorage.instance
           .ref()
@@ -138,7 +139,7 @@ class _OffersState extends State<Offers> {
                                                 print(offerData[index]
                                                     ["OfferId"]);
 
-                                                return showDialog<void>(
+                                                 showDialog<void>(
                                                   context: context,
                                                   barrierDismissible:
                                                       false, // user must tap button!
@@ -159,30 +160,18 @@ class _OffersState extends State<Offers> {
                                                         TextButton(
                                                           child: Text('ok'),
                                                           onPressed: () async {
-                                                            Reference
-                                                                reference =
-                                                                FirebaseStorage
-                                                                    .instance
-                                                                    .refFromURL(
-                                                                        offerData[index]
-                                                                            [
-                                                                            "imageUrl"]);
+                                                       Reference reference = FirebaseStorage.instance.refFromURL(offerData[index]["imageUrl"]);
                                                             print(reference);
                                                             await reference
                                                                 .delete();
                                                             await FirebaseFirestore
-                                                                .instance
-                                                                .collection(
-                                                                    "Offers")
-                                                                .doc(offerData[
-                                                                        index]
-                                                                    ["OfferId"])
+                                                            .instance
+                                                            .collection("Offers")
+                                                            .doc(offerData[index]["OfferId"])
                                                                 .delete()
                                                                 .then((value) {
-                                                              return showDialog<
-                                                                  void>(
-                                                                context:
-                                                                    context,
+                                                              return showDialog<void>(
+                                                                context:context,
                                                                 barrierDismissible:
                                                                     false, // user must tap button!
                                                                 builder:
@@ -219,8 +208,7 @@ class _OffersState extends State<Offers> {
                                                                 },
                                                               );
                                                             }).catchError((e) {
-                                                              return showDialog<
-                                                                  void>(
+                                                              return showDialog<void>(
                                                                 context:
                                                                     context,
                                                                 barrierDismissible:

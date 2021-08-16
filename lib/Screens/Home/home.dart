@@ -66,8 +66,11 @@ class _HomeState extends State<Home> {
     if (result != null) {
       Uint8List? uploadFile = result.files.single.bytes;
 
-      Reference reference =
-          FirebaseStorage.instance.ref().child("Offers").child(offerId!);
+      Reference reference = FirebaseStorage.instance
+          .ref()
+          .child("Offers")
+          .child(offerId!)
+          .child('CoverImages');
 
       final UploadTask uploadTask = reference.putData(uploadFile!);
       uploadTask.whenComplete(() async {
@@ -332,10 +335,11 @@ class _HomeState extends State<Home> {
                                                                               child: ElevatedButton(
                                                                                   style: ButtonStyle(elevation: MaterialStateProperty.all(10), padding: MaterialStateProperty.all(EdgeInsets.all(2.0.h)), backgroundColor: MaterialStateProperty.all(ConstantColors.blueColor), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(1.0.h))))),
                                                                                   onPressed: () async {
-                                                                                    var offerId = Uuid().v4();
-                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId).set({
+                                                                                    print(offerId!);
+
+                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId!).set({
                                                                                       "type": "BookOffer",
-                                                                                      "offerId": offerId,
+                                                                                      "offerId": offerId!,
                                                                                       "bookId": bookData[index]["bookId"],
                                                                                       "imageUrl": imageUrl!
                                                                                     }).whenComplete(() {
@@ -640,10 +644,10 @@ class _HomeState extends State<Home> {
                                                                               child: ElevatedButton(
                                                                                   style: ButtonStyle(elevation: MaterialStateProperty.all(10), padding: MaterialStateProperty.all(EdgeInsets.all(2.0.h)), backgroundColor: MaterialStateProperty.all(ConstantColors.blueColor), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(1.0.h))))),
                                                                                   onPressed: () async {
-                                                                                    var offerId = Uuid().v4();
-                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId).set({
+                                                                                    print(offerId!);
+                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId!).set({
                                                                                       "type": "BookOffer",
-                                                                                      "offerId": offerId,
+                                                                                      "offerId": offerId!,
                                                                                       "bookId": bookData[index]["bookId"],
                                                                                       "imageUrl": imageUrl!
                                                                                     }).whenComplete(() {
@@ -1011,10 +1015,11 @@ class _HomeState extends State<Home> {
                                                                               child: ElevatedButton(
                                                                                   style: ButtonStyle(elevation: MaterialStateProperty.all(10), padding: MaterialStateProperty.all(EdgeInsets.all(2.0.h)), backgroundColor: MaterialStateProperty.all(ConstantColors.blueColor), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(1.0.h))))),
                                                                                   onPressed: () async {
-                                                                                    var offerId = Uuid().v4();
-                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId).set({
+                                                                                    print(offerId!);
+
+                                                                                    await FirebaseFirestore.instance.collection("Offers").doc(offerId!).set({
                                                                                       "type": "BookOffer",
-                                                                                      "offerId": offerId,
+                                                                                      "offerId": offerId!,
                                                                                       "bookId": bookData[index]["bookId"],
                                                                                       "imageUrl": imageUrl!
                                                                                     }).whenComplete(() {
