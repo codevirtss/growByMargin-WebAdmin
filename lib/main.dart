@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
           initialUrl: "/",
           routes: [
             VWidget(path: "/", widget: MainTainancePage()),
-            VWidget(path: "/home", widget: Home()),
-            VWidget(path: "/offers", widget: Offers()),
-            VWidget(path: "/offerUpload", widget: OfferUpload()),
-            VWidget(path: "/upload", widget: DesktopView()),
-            VWidget(path: "/allUsers", widget: ViewUser()),
-            VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
+            // VWidget(path: "/home", widget: Home()),
+            // VWidget(path: "/offers", widget: Offers()),
+            // VWidget(path: "/offerUpload", widget: OfferUpload()),
+            // VWidget(path: "/upload", widget: DesktopView()),
+            // VWidget(path: "/allUsers", widget: ViewUser()),
+            // VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
           ],
         );
       }),
