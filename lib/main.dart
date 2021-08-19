@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:growbymargin_webadmin/Screens/Auth/LoginScreen.dart';
 import 'package:growbymargin_webadmin/Screens/Auth/Navigation.dart';
 import 'package:growbymargin_webadmin/Screens/Home/home.dart';
 import 'package:growbymargin_webadmin/Screens/Mainatinance.dart';
@@ -28,13 +29,13 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.light,
           initialUrl: "/",
           routes: [
-            VWidget(path: "/", widget: MainTainancePage()),
-            // VWidget(path: "/home", widget: Home()),
-            // VWidget(path: "/offers", widget: Offers()),
-            // VWidget(path: "/offerUpload", widget: OfferUpload()),
-            // VWidget(path: "/upload", widget: DesktopView()),
-            // VWidget(path: "/allUsers", widget: ViewUser()),
-            // VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
+            VWidget(path: "/", widget: Login()),
+            VWidget(path: "/home", widget: Home()),
+            VWidget(path: "/offers", widget: Offers()),
+            VWidget(path: "/offerUpload", widget: OfferUpload()),
+            VWidget(path: "/upload", widget: DesktopView()),
+            VWidget(path: "/allUsers", widget: ViewUser()),
+            VRouteRedirector(path: ':_(.+)', redirectTo: "/home")
           ],
         );
       }),
